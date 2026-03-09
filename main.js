@@ -288,6 +288,11 @@ function isImageFile(path) {
   return imageExtensions.some((extension) => normalized.endsWith(extension));
 }
 
+function isPdfFile(path) {
+  const normalized = path.toLowerCase().split("?")[0];
+  return normalized.endsWith(".pdf");
+}
+
 function fileExtension(path) {
   if (isExternalUrl(path)) {
     return "WEB";
@@ -311,10 +316,16 @@ function defaultPdfPreview(path) {
     return "";
   }
   const cleanPath = path.split("?")[0];
-  if (!cleanPath.toLowerCase().endsWith(".pdf")) {
+  if (!isPdfFile(cleanPath)) {
     return "";
   }
   return `assets/pdf-previews/${fileName(cleanPath)}.png`;
+}
+
+function toPdfViewerUrl(path) {
+  const baseUrl = toPublicUrl(path);
+  const hashJoiner = baseUrl.includes("#") ? "&" : "#";
+  return `${baseUrl}${hashJoiner}toolbar=0&navpanes=0&scrollbar=1&view=FitH`;
 }
 
 function renderTeachingPhotos() {
@@ -496,12 +507,13 @@ function renderDocumentCards(containerId, items, emptyLabel) {
     const description = document.createElement("p");
     description.textContent = item.description || "Add a short description in main.js.";
 
-    const link = document.createElement("a");
+    const link = document.createElement("button");
+    link.type = "button";
     link.className = "certificate-link";
-    link.href = toPublicUrl(item.file);
-    link.target = "_blank";
-    link.rel = "noopener";
-    link.textContent = "Open File";
+    link.textContent = "View File";
+    link.addEventListener("click", () => {
+      openDocumentPreview(item);
+    });
 
     body.appendChild(title);
     body.appendChild(description);
@@ -510,6 +522,102 @@ function renderDocumentCards(containerId, items, emptyLabel) {
     card.appendChild(preview);
     card.appendChild(body);
     container.appendChild(card);
+  });
+}
+
+function openDocumentPreview(item) {
+  document.dispatchEvent(
+    new CustomEvent("portfolio:open-document", {
+      detail: item,
+    })
+  );
+}
+
+function initializeDocumentViewer() {
+  const viewer = document.getElementById("doc-viewer");
+  const backdrop = document.getElementById("doc-viewer-backdrop");
+  const closeButton = document.getElementById("doc-viewer-close");
+  const title = document.getElementById("doc-viewer-title");
+  const content = document.getElementById("doc-viewer-content");
+
+  if (!viewer || !backdrop || !closeButton || !title || !content) {
+    return;
+  }
+
+  const closeViewer = () => {
+    viewer.classList.remove("is-open");
+    viewer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("doc-viewer-open");
+    content.innerHTML = "";
+  };
+
+  const openViewer = (item) => {
+    if (!item || !item.file) {
+      return;
+    }
+
+    const fileUrl = toPublicUrl(item.file);
+    const externalWebPage = isExternalUrl(item.file) && !isPdfFile(item.file) && !isImageFile(item.file);
+
+    if (externalWebPage) {
+      window.open(fileUrl, "_blank", "noopener");
+      return;
+    }
+
+    title.textContent = item.title || "Document Preview";
+    content.innerHTML = "";
+
+    if (isPdfFile(item.file)) {
+      const frame = document.createElement("iframe");
+      frame.className = "doc-viewer-frame";
+      frame.src = toPdfViewerUrl(item.file);
+      frame.title = `${item.title || "Document"} PDF preview`;
+      frame.loading = "lazy";
+      content.appendChild(frame);
+    } else if (isImageFile(item.file)) {
+      const image = document.createElement("img");
+      image.className = "doc-viewer-image";
+      image.src = fileUrl;
+      image.alt = item.title || "Document image preview";
+      image.loading = "lazy";
+      image.draggable = false;
+      content.appendChild(image);
+    } else {
+      const fallback = document.createElement("a");
+      fallback.className = "doc-viewer-fallback-link";
+      fallback.href = fileUrl;
+      fallback.target = "_blank";
+      fallback.rel = "noopener";
+      fallback.textContent = "Open in new tab";
+      content.appendChild(fallback);
+    }
+
+    viewer.classList.add("is-open");
+    viewer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("doc-viewer-open");
+  };
+
+  document.addEventListener("portfolio:open-document", (event) => {
+    openViewer(event.detail);
+  });
+
+  closeButton.addEventListener("click", closeViewer);
+  backdrop.addEventListener("click", closeViewer);
+
+  content.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+  });
+
+  content.addEventListener("dragstart", (event) => {
+    if (event.target && event.target.tagName === "IMG") {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && viewer.classList.contains("is-open")) {
+      closeViewer();
+    }
   });
 }
 
@@ -847,6 +955,7 @@ function initializeHeroMediaIntro() {
 
 renderLogos();
 renderTeachingPhotos();
+initializeDocumentViewer();
 renderDocumentCards("certificate-grid", certificateItems, "certificates");
 renderDocumentCards("transcript-grid", transcriptItems, "transcripts");
 initializeHeroMediaIntro();

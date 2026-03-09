@@ -8,7 +8,7 @@
       name="description"
       content="Teaching portfolio of Samuel Jr. Pana Buray, Licensed Professional Teacher in Digital Literacy, Computing, Robotics, and educational technology."
     />
-    <link rel="stylesheet" href="styles.css?v=20260309c1" />
+    <link rel="stylesheet" href="styles.css?v=20260310c1" />
   </head>
   <body>
     <header class="topbar">
@@ -451,6 +451,16 @@ I integrate technology purposefully to enhance collaboration, computational thin
       <p>© <span id="year"></span> Samuel Jr. Pana Buray</p>
     </footer>
 
-    <script src="main.js?v=20260309c5"></script>
+    <div class="doc-viewer" id="doc-viewer" aria-hidden="true">
+      <button class="doc-viewer-backdrop" id="doc-viewer-backdrop" type="button" aria-label="Close viewer"></button>
+      <div class="doc-viewer-dialog" role="dialog" aria-modal="true" aria-label="Document viewer">
+        <button class="doc-viewer-close" id="doc-viewer-close" type="button" aria-label="Close viewer">×</button>
+        <p class="doc-viewer-title" id="doc-viewer-title">Document Preview</p>
+        <div class="doc-viewer-content" id="doc-viewer-content"></div>
+        <p class="doc-viewer-note">Preview mode only. Download controls are hidden in the viewer.</p>
+      </div>
+    </div>
+
+    <script src="main.js?v=20260310c1"></script>
   </body>
 </html>
