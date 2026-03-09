@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Teaching Philosophy Structure</title>
+  <desc id="desc">Aligned and readable teaching philosophy framework with six core pillars in a modern blue UI theme.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#eaf3fc"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <style>
+      .title { font: 800 42px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #0f172a; letter-spacing: -0.02em; }
+      .subtitle { font: 600 20px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #475569; }
+      .core-title { font: 800 28px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #ffffff; letter-spacing: -0.01em; }
+      .core-text { font: 500 18px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #e9f6ff; }
+      .card-title { font: 800 21px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .card-text { font: 500 16px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #475569; }
+      .footer { font: 600 17px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #274860; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="900" fill="url(#bg)"/>
+
+  <rect x="52" y="34" width="1096" height="108" rx="22" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+  <text x="84" y="84" class="title">Teaching Philosophy Structure</text>
+  <text x="84" y="116" class="subtitle">Student-centered learning design for inclusive, future-ready classrooms.</text>
+
+  <rect x="110" y="154" width="980" height="182" rx="24" fill="url(#hero)"/>
+  <text x="600" y="218" text-anchor="middle" class="core-title">Core Belief: Student-Centered Learning</text>
+  <text x="600" y="255" text-anchor="middle" class="core-text">Every learner can grow with guidance, voice,</text>
+  <text x="600" y="288" text-anchor="middle" class="core-text">and meaningful learning experiences.</text>
+
+  <line x1="600" y1="336" x2="220" y2="334" stroke="#8bb7dc" stroke-width="2.6"/>
+  <line x1="600" y1="336" x2="600" y2="334" stroke="#8bb7dc" stroke-width="2.6"/>
+  <line x1="600" y1="336" x2="980" y2="334" stroke="#8bb7dc" stroke-width="2.6"/>
+  <line x1="600" y1="336" x2="220" y2="562" stroke="#8bb7dc" stroke-width="2.6"/>
+  <line x1="600" y1="336" x2="600" y2="562" stroke="#8bb7dc" stroke-width="2.6"/>
+  <line x1="600" y1="336" x2="980" y2="562" stroke="#8bb7dc" stroke-width="2.6"/>
+
+  <g transform="translate(52 334)">
+    <rect x="0" y="0" width="330" height="180" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="44" class="card-title">1. Meaningful Learning</text>
+    <text x="22" y="82" class="card-text">Safe and supportive environment</text>
+    <text x="22" y="112" class="card-text">Student voice and learner agency</text>
+    <text x="22" y="142" class="card-text">Confidence through guided practice</text>
+  </g>
+
+  <g transform="translate(430 334)">
+    <rect x="0" y="0" width="330" height="180" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="44" class="card-title">2. Inquiry and PBL</text>
+    <text x="22" y="82" class="card-text">Exploration, questioning, and discovery</text>
+    <text x="22" y="112" class="card-text">Real-world problem solving tasks</text>
+    <text x="22" y="142" class="card-text">Independent and resilient learners</text>
+  </g>
+
+  <g transform="translate(808 334)">
+    <rect x="0" y="0" width="330" height="180" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="44" class="card-title">3. Purposeful Technology</text>
+    <text x="22" y="82" class="card-text">Creation and collaboration with tools</text>
+    <text x="22" y="112" class="card-text">Ethical and responsible digital use</text>
+    <text x="22" y="142" class="card-text">Computational thinking in context</text>
+  </g>
+
+  <g transform="translate(52 562)">
+    <rect x="0" y="0" width="330" height="180" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="44" class="card-title">4. Inclusion and Wellbeing</text>
+    <text x="22" y="82" class="card-text">Respect for diverse needs and cultures</text>
+    <text x="22" y="112" class="card-text">Trust, safety, and belonging</text>
+    <text x="22" y="142" class="card-text">Positive and caring relationships</text>
+  </g>
+
+  <g transform="translate(430 562)">
+    <rect x="0" y="0" width="330" height="180" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="44" class="card-title">5. Reflective Practice</text>
+    <text x="22" y="82" class="card-text">Continuous learning and refinement</text>
+    <text x="22" y="112" class="card-text">Evidence-informed adjustments</text>
+    <text x="22" y="142" class="card-text">Relevant and engaging instruction</text>
+  </g>
+
+  <g transform="translate(808 562)">
+    <rect x="0" y="0" width="330" height="180" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="44" class="card-title">6. Learner Outcomes</text>
+    <text x="22" y="82" class="card-text">Curious and collaborative learners</text>
+    <text x="22" y="112" class="card-text">Confident and responsible citizens</text>
+    <text x="22" y="142" class="card-text">Prepared for future pathways</text>
+  </g>
+
+  <rect x="52" y="776" width="1096" height="74" rx="16" fill="#e8f3ff" stroke="#b6d0e8" stroke-width="2"/>
+  <text x="80" y="820" class="footer">Philosophy in action: empowered learners, purposeful technology, and inclusive growth for every student.</text>
+</svg>

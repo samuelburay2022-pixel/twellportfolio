@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="860" viewBox="0 0 1240 860" role="img" aria-labelledby="title desc">
+  <title id="title">NK System Structure</title>
+  <desc id="desc">Readable blue themed system structure for the NK international school grading workflow.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#eaf3fc"/>
+    </linearGradient>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <style>
+      .title { font: 800 40px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #ffffff; letter-spacing: -0.02em; }
+      .subtitle { font: 500 20px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #e8f6ff; }
+      .step { font: 700 17px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #0369a1; letter-spacing: 0.05em; text-transform: uppercase; }
+      .card-title { font: 800 24px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .card-text { font: 500 17px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #475569; }
+      .footer { font: 600 18px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #274860; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6f9fc9"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1240" height="860" fill="url(#bg)"/>
+
+  <rect x="50" y="34" width="1140" height="118" rx="24" fill="url(#header)"/>
+  <text x="86" y="87" class="title">NK System Structure</text>
+  <text x="86" y="122" class="subtitle">International School Grading Workflow</text>
+
+  <g transform="translate(40 192)">
+    <rect x="0" y="0" width="270" height="196" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="36" class="step">Step 1</text>
+    <text x="22" y="74" class="card-title">Data Input</text>
+    <text x="22" y="112" class="card-text">Assessments and rubrics</text>
+    <text x="22" y="142" class="card-text">Attendance and behavior logs</text>
+    <text x="22" y="172" class="card-text">Teacher evidence records</text>
+  </g>
+
+  <g transform="translate(340 192)">
+    <rect x="0" y="0" width="270" height="196" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="36" class="step">Step 2</text>
+    <text x="22" y="74" class="card-title">Validation</text>
+    <text x="22" y="112" class="card-text">Missing data checks</text>
+    <text x="22" y="142" class="card-text">Scale and weight rules</text>
+    <text x="22" y="172" class="card-text">Teacher confirmation</text>
+  </g>
+
+  <g transform="translate(640 192)">
+    <rect x="0" y="0" width="270" height="196" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="36" class="step">Step 3</text>
+    <text x="22" y="74" class="card-title">Grade Engine</text>
+    <text x="22" y="112" class="card-text">Term calculations</text>
+    <text x="22" y="142" class="card-text">Standards mapping</text>
+    <text x="22" y="172" class="card-text">Automated score output</text>
+  </g>
+
+  <g transform="translate(940 192)">
+    <rect x="0" y="0" width="260" height="196" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="36" class="step">Step 4</text>
+    <text x="22" y="74" class="card-title">Analytics</text>
+    <text x="22" y="112" class="card-text">Trends and growth insights</text>
+    <text x="22" y="142" class="card-text">At-risk learner alerts</text>
+    <text x="22" y="172" class="card-text">Class-level comparisons</text>
+  </g>
+
+  <g transform="translate(160 498)">
+    <rect x="0" y="0" width="420" height="208" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="36" class="step">Step 5</text>
+    <text x="22" y="76" class="card-title">Reporting</text>
+    <text x="22" y="116" class="card-text">Teacher dashboard summaries</text>
+    <text x="22" y="146" class="card-text">Parent and student report cards</text>
+    <text x="22" y="176" class="card-text">Intervention planning outputs</text>
+  </g>
+
+  <g transform="translate(660 498)">
+    <rect x="0" y="0" width="420" height="208" rx="20" fill="#ffffff" stroke="#b6d0e8" stroke-width="2"/>
+    <text x="22" y="36" class="step">Step 6</text>
+    <text x="22" y="76" class="card-title">Support Layer</text>
+    <text x="22" y="116" class="card-text">Help center and user guides</text>
+    <text x="22" y="146" class="card-text">Role-based permissions</text>
+    <text x="22" y="176" class="card-text">Audit trail and policy logs</text>
+  </g>
+
+  <line x1="310" y1="290" x2="340" y2="290" stroke="#6f9fc9" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="610" y1="290" x2="640" y2="290" stroke="#6f9fc9" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="910" y1="290" x2="940" y2="290" stroke="#6f9fc9" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1070 388 C 1070 442, 900 456, 770 498" fill="none" stroke="#6f9fc9" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 770 388 C 770 446, 560 456, 360 498" fill="none" stroke="#6f9fc9" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="50" y="760" width="1140" height="60" rx="14" fill="#e8f3ff" stroke="#b6d0e8" stroke-width="2"/>
+  <text x="84" y="798" class="footer">Outcome: consistent grading, transparent reporting, and early support for student success.</text>
+</svg>
