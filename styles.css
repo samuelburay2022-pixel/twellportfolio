@@ -1073,83 +1073,6 @@ body.doc-viewer-open {
   color: var(--muted);
 }
 
-.visitors-simple {
-  margin-top: 1rem;
-  max-width: 640px;
-  padding: 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface-soft);
-  display: grid;
-  gap: 0.7rem;
-}
-
-.visitors-simple h3 {
-  font-size: 1.22rem;
-}
-
-.visitors-login-form {
-  display: grid;
-  gap: 0.6rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.visitors-login-form label {
-  display: grid;
-  gap: 0.25rem;
-  color: var(--muted);
-  font-size: 0.84rem;
-  font-weight: 700;
-}
-
-.visitors-login-form input {
-  min-height: 2.45rem;
-  padding: 0.45rem 0.6rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 10px;
-  background: #ffffff;
-  color: #0f172a;
-  font: inherit;
-}
-
-.visitors-login-form input:focus-visible {
-  outline: 2px solid rgba(2, 132, 199, 0.3);
-  outline-offset: 1px;
-}
-
-.visitors-login-form button {
-  grid-column: 1 / -1;
-  width: fit-content;
-}
-
-.visitors-status {
-  color: #154466;
-  font-weight: 700;
-}
-
-.visitors-auth-message {
-  min-height: 1.2em;
-  color: var(--muted);
-  font-size: 0.86rem;
-}
-
-.visitors-auth-message.is-error {
-  color: #b91c1c;
-}
-
-.visitors-auth-message.is-success {
-  color: #166534;
-}
-
-.visitors-dashboard-button.is-hidden {
-  display: none;
-}
-
-#open-visitors-dashboard[disabled] {
-  opacity: 0.62;
-  cursor: not-allowed;
-}
-
 .projects-grid {
   margin-top: 1rem;
   display: grid;
@@ -1426,6 +1349,141 @@ body.doc-viewer-open {
   color: var(--muted);
 }
 
+.footer-meta {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.owner-login-link {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #0b5f88;
+  font: inherit;
+  font-size: 0.88rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.owner-login-link:hover,
+.owner-login-link:focus-visible {
+  color: #0b4f70;
+}
+
+.owner-login-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 175;
+  display: none;
+}
+
+.owner-login-modal.is-open {
+  display: grid;
+  place-items: center;
+}
+
+.owner-login-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(3px);
+}
+
+.owner-login-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(470px, calc(100vw - 1.2rem));
+  border: 1px solid #9abdd8;
+  border-radius: 16px;
+  padding: 0.92rem;
+  background:
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 42%),
+    linear-gradient(180deg, #f6fbff 0%, #e9f3ff 100%);
+  display: grid;
+  gap: 0.65rem;
+  box-shadow: 0 24px 48px rgba(2, 6, 23, 0.34);
+}
+
+.owner-login-close {
+  position: absolute;
+  top: 0.44rem;
+  right: 0.44rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid #9cbad5;
+  background: #ffffff;
+  color: #11324d;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.owner-login-dialog h3 {
+  padding-right: 2.2rem;
+  font-size: 1.08rem;
+}
+
+.owner-login-status {
+  color: #2b516d;
+  font-size: 0.89rem;
+}
+
+.owner-login-form {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.owner-login-form label {
+  display: grid;
+  gap: 0.25rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.owner-login-form input {
+  min-height: 2.45rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font: inherit;
+}
+
+.owner-login-form input:focus-visible {
+  outline: 2px solid rgba(2, 132, 199, 0.3);
+  outline-offset: 1px;
+}
+
+.owner-login-message {
+  min-height: 1.2em;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.owner-login-message.is-error {
+  color: #b91c1c;
+}
+
+.owner-login-message.is-success {
+  color: #166534;
+}
+
+#owner-login-submit[disabled] {
+  opacity: 0.62;
+  cursor: not-allowed;
+}
+
+body.owner-login-open {
+  overflow: hidden;
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
@@ -1510,10 +1568,6 @@ body.doc-viewer-open {
   .philosophy-layout,
   .credentials-grid,
   .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .visitors-login-form {
     grid-template-columns: 1fr;
   }
 

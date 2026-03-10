@@ -631,23 +631,29 @@ function initializeDocumentViewer() {
   });
 }
 
-function initializeVisitorsAnalytics() {
-  const status = document.getElementById("visitors-status");
-  const openButton = document.getElementById("open-visitors-dashboard");
-  const loginForm = document.getElementById("visitors-login-form");
-  const usernameInput = document.getElementById("visitors-username");
-  const passwordInput = document.getElementById("visitors-password");
-  const loginButton = document.getElementById("visitors-login-button");
-  const authMessage = document.getElementById("visitors-auth-message");
+function initializeOwnerLoginPopup() {
+  const trigger = document.getElementById("owner-login-trigger");
+  const modal = document.getElementById("owner-login-modal");
+  const backdrop = document.getElementById("owner-login-backdrop");
+  const closeButton = document.getElementById("owner-login-close");
+  const status = document.getElementById("owner-login-status");
+  const form = document.getElementById("owner-login-form");
+  const usernameInput = document.getElementById("owner-login-username");
+  const passwordInput = document.getElementById("owner-login-password");
+  const submitButton = document.getElementById("owner-login-submit");
+  const message = document.getElementById("owner-login-message");
 
   if (
+    !trigger ||
+    !modal ||
+    !backdrop ||
+    !closeButton ||
     !status ||
-    !openButton ||
-    !loginForm ||
+    !form ||
     !usernameInput ||
     !passwordInput ||
-    !loginButton ||
-    !authMessage
+    !submitButton ||
+    !message
   ) {
     return;
   }
@@ -678,61 +684,77 @@ function initializeVisitorsAnalytics() {
     });
   };
 
-  const setAuthMessage = (text, tone = "") => {
-    authMessage.textContent = text;
-    authMessage.classList.remove("is-error", "is-success");
+  const setMessage = (text, tone = "") => {
+    message.textContent = text;
+    message.classList.remove("is-error", "is-success");
     if (tone) {
-      authMessage.classList.add(`is-${tone}`);
+      message.classList.add(`is-${tone}`);
     }
+  };
+
+  const openModal = () => {
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("owner-login-open");
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("owner-login-open");
+    form.reset();
+    setMessage("");
   };
 
   if (measurementId) {
     loadGoogleAnalytics(measurementId);
   }
 
-  openButton.disabled = true;
-  openButton.classList.add("is-hidden");
-
   if (!dashboardUrl) {
     status.textContent = "Set gaDashboardUrl in main.js.";
-    loginButton.disabled = true;
-    setAuthMessage("Dashboard link is not configured.", "error");
-    return;
-  }
-
-  if (!ownerUsername || !ownerPassword) {
+    submitButton.disabled = true;
+    setMessage("Dashboard link is not configured.", "error");
+  } else if (!ownerUsername || !ownerPassword) {
     status.textContent = "Set ownerUsername and ownerPassword in main.js.";
-    loginButton.disabled = true;
-    setAuthMessage("Login details are not configured yet.", "error");
-    return;
+    submitButton.disabled = true;
+    setMessage("Owner login details are not configured yet.", "error");
+  } else {
+    status.textContent = "Enter your Admin/Owner login details.";
+    submitButton.disabled = false;
   }
 
-  status.textContent = "Dashboard locked. Enter your login details.";
-  loginButton.disabled = false;
-  setAuthMessage("");
+  trigger.addEventListener("click", openModal);
+  closeButton.addEventListener("click", closeModal);
+  backdrop.addEventListener("click", closeModal);
 
-  loginForm.addEventListener("submit", (event) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    if (!dashboardUrl || !ownerUsername || !ownerPassword) {
+      return;
+    }
 
     const enteredUsername = usernameInput.value.trim();
     const enteredPassword = passwordInput.value;
     const validLogin = enteredUsername === ownerUsername && enteredPassword === ownerPassword;
 
     if (!validLogin) {
-      openButton.disabled = true;
-      openButton.classList.add("is-hidden");
-      setAuthMessage("Invalid login details.", "error");
+      setMessage("Invalid login details.", "error");
       return;
     }
 
-    openButton.disabled = false;
-    openButton.classList.remove("is-hidden");
-    setAuthMessage("Login successful. You can open the dashboard now.", "success");
+    setMessage("Login successful. Opening dashboard...", "success");
+    window.open(dashboardUrl, "_blank", "noopener");
     passwordInput.value = "";
+    setTimeout(() => {
+      closeModal();
+    }, 280);
   });
 
-  openButton.addEventListener("click", () => {
-    window.open(dashboardUrl, "_blank", "noopener");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
   });
 }
 
@@ -1071,7 +1093,7 @@ function initializeHeroMediaIntro() {
 renderLogos();
 renderTeachingPhotos();
 initializeDocumentViewer();
-initializeVisitorsAnalytics();
+initializeOwnerLoginPopup();
 renderDocumentCards("certificate-grid", certificateItems, "certificates");
 renderDocumentCards("transcript-grid", transcriptItems, "transcripts");
 initializeHeroMediaIntro();
