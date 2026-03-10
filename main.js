@@ -994,7 +994,7 @@ function initializeHeroMediaIntro() {
   const wrapper = document.getElementById("hero-media-visual");
   const introVideo = document.getElementById("hero-intro-video");
   const soundButton = document.getElementById("hero-video-sound-button");
-  if (!wrapper || !introVideo) {
+  if (!wrapper || !introVideo || !soundButton) {
     return;
   }
 
@@ -1015,12 +1015,12 @@ function initializeHeroMediaIntro() {
   introVideo.addEventListener("error", showProfileImage, { once: true });
   introVideo.addEventListener("abort", showProfileImage, { once: true });
 
-  const showSoundButton = () => {
-    soundButton?.classList.remove("is-hidden");
+  const showButton = () => {
+    soundButton.classList.remove("is-hidden");
   };
 
-  const hideSoundButton = () => {
-    soundButton?.classList.add("is-hidden");
+  const hideButton = () => {
+    soundButton.classList.add("is-hidden");
   };
 
   const playWithSound = () => {
@@ -1033,30 +1033,33 @@ function initializeHeroMediaIntro() {
   const playMuted = () => {
     introVideo.muted = true;
     introVideo.defaultMuted = true;
+    introVideo.volume = 0;
     return introVideo.play();
   };
 
   const startVideo = () => {
     const withSoundAttempt = playWithSound();
     if (!withSoundAttempt || typeof withSoundAttempt.catch !== "function") {
-      hideSoundButton();
+      hideButton();
       return;
     }
 
     withSoundAttempt
       .then(() => {
-        hideSoundButton();
+        hideButton();
       })
       .catch(() => {
         const mutedAttempt = playMuted();
         if (!mutedAttempt || typeof mutedAttempt.catch !== "function") {
-          showSoundButton();
+          soundButton.textContent = "Play Intro";
+          showButton();
           return;
         }
 
         mutedAttempt
           .then(() => {
-            showSoundButton();
+            soundButton.textContent = "Enable Sound";
+            showButton();
           })
           .catch(() => {
             showProfileImage();
@@ -1064,30 +1067,22 @@ function initializeHeroMediaIntro() {
       });
   };
 
-  soundButton?.addEventListener("click", () => {
-    const userPlayAttempt = playWithSound();
-    if (userPlayAttempt && typeof userPlayAttempt.catch === "function") {
-      userPlayAttempt
-        .then(() => {
-          hideSoundButton();
-        })
-        .catch(() => {
-          showSoundButton();
-        });
-      return;
-    }
-    hideSoundButton();
+  soundButton.addEventListener("click", () => {
+    startVideo();
   });
 
   introVideo.addEventListener("volumechange", () => {
     if (introVideo.muted || introVideo.volume === 0) {
-      showSoundButton();
+      if (!introVideo.paused) {
+        soundButton.textContent = "Enable Sound";
+      }
+      showButton();
     } else {
-      hideSoundButton();
+      hideButton();
     }
   });
 
-  startVideo();
+  showButton();
 }
 
 renderLogos();
