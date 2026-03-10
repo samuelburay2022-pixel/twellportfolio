@@ -1359,12 +1359,13 @@ body.doc-viewer-open {
 
 .owner-login-link {
   border: 0;
-  padding: 0;
+  padding: 0.05rem 0;
   background: transparent;
   color: #0b5f88;
   font: inherit;
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   text-decoration: underline;
+  text-underline-offset: 3px;
   cursor: pointer;
 }
 
