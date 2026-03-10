@@ -1073,6 +1073,53 @@ body.doc-viewer-open {
   color: var(--muted);
 }
 
+.visitors-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.visitors-card {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+}
+
+.visitors-card h3 {
+  font-size: 1.22rem;
+}
+
+.visitors-card p,
+.visitors-card ul {
+  color: var(--muted);
+}
+
+.visitors-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.visitors-status {
+  color: #154466;
+  font-weight: 700;
+}
+
+.visitors-note {
+  font-size: 0.86rem;
+}
+
+#open-visitors-dashboard[disabled] {
+  opacity: 0.62;
+  cursor: not-allowed;
+}
+
 .projects-grid {
   margin-top: 1rem;
   display: grid;
@@ -1432,7 +1479,8 @@ body.doc-viewer-open {
 
   .philosophy-layout,
   .credentials-grid,
-  .projects-grid {
+  .projects-grid,
+  .visitors-grid {
     grid-template-columns: 1fr;
   }
 

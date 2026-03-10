@@ -229,6 +229,13 @@ const transcriptItems = [
   },
 ];
 
+const visitorsAnalyticsConfig = {
+  // 1) Create GA4 property and copy Measurement ID (format: G-XXXXXXXXXX).
+  gaMeasurementId: "",
+  // 2) Add your GA report/share URL here. This URL requires your Google login.
+  gaDashboardUrl: "",
+};
+
 const philosophySlides = [
   {
     step: "Core Belief",
@@ -621,6 +628,58 @@ function initializeDocumentViewer() {
   });
 }
 
+function initializeVisitorsAnalytics() {
+  const status = document.getElementById("visitors-status");
+  const openButton = document.getElementById("open-visitors-dashboard");
+  if (!status || !openButton) {
+    return;
+  }
+
+  const measurementId = visitorsAnalyticsConfig.gaMeasurementId.trim();
+  const dashboardUrl = visitorsAnalyticsConfig.gaDashboardUrl.trim();
+
+  const loadGoogleAnalytics = (id) => {
+    if (!id || window.gtag) {
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+
+    window.gtag("js", new Date());
+    window.gtag("config", id, {
+      anonymize_ip: true,
+    });
+  };
+
+  if (measurementId) {
+    loadGoogleAnalytics(measurementId);
+  }
+
+  if (measurementId && dashboardUrl) {
+    status.textContent = "Tracking enabled. Login required to view private dashboard.";
+    openButton.disabled = false;
+  } else {
+    status.textContent =
+      "Set gaMeasurementId and gaDashboardUrl in main.js to activate visitors tracking.";
+    openButton.disabled = true;
+  }
+
+  openButton.addEventListener("click", () => {
+    if (!dashboardUrl) {
+      return;
+    }
+    window.open(dashboardUrl, "_blank", "noopener");
+  });
+}
+
 function initializePhilosophyPresentation() {
   const screen = document.getElementById("philosophy-presentation-screen");
   const stepElement = document.getElementById("philosophy-slide-step");
@@ -956,6 +1015,7 @@ function initializeHeroMediaIntro() {
 renderLogos();
 renderTeachingPhotos();
 initializeDocumentViewer();
+initializeVisitorsAnalytics();
 renderDocumentCards("certificate-grid", certificateItems, "certificates");
 renderDocumentCards("transcript-grid", transcriptItems, "transcripts");
 initializeHeroMediaIntro();
