@@ -8,7 +8,7 @@
       name="description"
       content="Teaching portfolio of Samuel Jr. Pana Buray, Licensed Professional Teacher in Digital Literacy, Computing, Robotics, and educational technology."
     />
-    <link rel="stylesheet" href="styles.css?v=20260310c2" />
+    <link rel="stylesheet" href="styles.css?v=20260310c3" />
   </head>
   <body>
     <header class="topbar">
@@ -422,27 +422,33 @@ I integrate technology purposefully to enhance collaboration, computational thin
       <section class="section card" id="visitors">
         <div class="section-heading" data-reveal>
           <p class="eyebrow">Visitors</p>
-          <h2>Login-protected analytics for portfolio traffic and audience location.</h2>
+          <h2>Private visitors dashboard access.</h2>
         </div>
-        <div class="visitors-grid" data-reveal>
-          <article class="visitors-card">
-            <h3>Visitors Dashboard</h3>
-            <p class="visitors-status" id="visitors-status">Analytics setup needed in main.js.</p>
-            <button class="button button-primary" id="open-visitors-dashboard" type="button">
-              Open Visitors Dashboard
+        <div class="visitors-simple" data-reveal>
+          <h3>Owner Login Required</h3>
+          <p class="visitors-status" id="visitors-status">Configure access in main.js.</p>
+          <form class="visitors-login-form" id="visitors-login-form" autocomplete="off">
+            <label>
+              Username
+              <input id="visitors-username" type="text" placeholder="Enter username" required />
+            </label>
+            <label>
+              Password
+              <input id="visitors-password" type="password" placeholder="Enter password" required />
+            </label>
+            <button class="button button-secondary" id="visitors-login-button" type="submit">
+              Login
             </button>
-            <p class="visitors-note">
-              Dashboard access is protected by your Google account login.
-            </p>
-          </article>
-          <article class="visitors-card">
-            <h3>What You Can Track</h3>
-            <ul>
-              <li>Total page views and active users</li>
-              <li>Visitor country/city location overview</li>
-              <li>Views by date and time</li>
-            </ul>
-          </article>
+          </form>
+          <p class="visitors-auth-message" id="visitors-auth-message"></p>
+          <button
+            class="button button-primary visitors-dashboard-button is-hidden"
+            id="open-visitors-dashboard"
+            type="button"
+            disabled
+          >
+            Open Visitors Dashboard
+          </button>
         </div>
       </section>
 
@@ -489,6 +495,6 @@ I integrate technology purposefully to enhance collaboration, computational thin
       </div>
     </div>
 
-    <script src="main.js?v=20260310c2"></script>
+    <script src="main.js?v=20260310c3"></script>
   </body>
 </html>

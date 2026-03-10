@@ -234,6 +234,9 @@ const visitorsAnalyticsConfig = {
   gaMeasurementId: "",
   // 2) Add your GA report/share URL here. This URL requires your Google login.
   gaDashboardUrl: "",
+  // 3) Simple owner access gate for this page section.
+  ownerUsername: "",
+  ownerPassword: "",
 };
 
 const philosophySlides = [
@@ -631,12 +634,28 @@ function initializeDocumentViewer() {
 function initializeVisitorsAnalytics() {
   const status = document.getElementById("visitors-status");
   const openButton = document.getElementById("open-visitors-dashboard");
-  if (!status || !openButton) {
+  const loginForm = document.getElementById("visitors-login-form");
+  const usernameInput = document.getElementById("visitors-username");
+  const passwordInput = document.getElementById("visitors-password");
+  const loginButton = document.getElementById("visitors-login-button");
+  const authMessage = document.getElementById("visitors-auth-message");
+
+  if (
+    !status ||
+    !openButton ||
+    !loginForm ||
+    !usernameInput ||
+    !passwordInput ||
+    !loginButton ||
+    !authMessage
+  ) {
     return;
   }
 
   const measurementId = visitorsAnalyticsConfig.gaMeasurementId.trim();
   const dashboardUrl = visitorsAnalyticsConfig.gaDashboardUrl.trim();
+  const ownerUsername = visitorsAnalyticsConfig.ownerUsername.trim();
+  const ownerPassword = visitorsAnalyticsConfig.ownerPassword || "";
 
   const loadGoogleAnalytics = (id) => {
     if (!id || window.gtag) {
@@ -659,23 +678,60 @@ function initializeVisitorsAnalytics() {
     });
   };
 
+  const setAuthMessage = (text, tone = "") => {
+    authMessage.textContent = text;
+    authMessage.classList.remove("is-error", "is-success");
+    if (tone) {
+      authMessage.classList.add(`is-${tone}`);
+    }
+  };
+
   if (measurementId) {
     loadGoogleAnalytics(measurementId);
   }
 
-  if (measurementId && dashboardUrl) {
-    status.textContent = "Tracking enabled. Login required to view private dashboard.";
-    openButton.disabled = false;
-  } else {
-    status.textContent =
-      "Set gaMeasurementId and gaDashboardUrl in main.js to activate visitors tracking.";
-    openButton.disabled = true;
+  openButton.disabled = true;
+  openButton.classList.add("is-hidden");
+
+  if (!dashboardUrl) {
+    status.textContent = "Set gaDashboardUrl in main.js.";
+    loginButton.disabled = true;
+    setAuthMessage("Dashboard link is not configured.", "error");
+    return;
   }
 
-  openButton.addEventListener("click", () => {
-    if (!dashboardUrl) {
+  if (!ownerUsername || !ownerPassword) {
+    status.textContent = "Set ownerUsername and ownerPassword in main.js.";
+    loginButton.disabled = true;
+    setAuthMessage("Login details are not configured yet.", "error");
+    return;
+  }
+
+  status.textContent = "Dashboard locked. Enter your login details.";
+  loginButton.disabled = false;
+  setAuthMessage("");
+
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const enteredUsername = usernameInput.value.trim();
+    const enteredPassword = passwordInput.value;
+    const validLogin = enteredUsername === ownerUsername && enteredPassword === ownerPassword;
+
+    if (!validLogin) {
+      openButton.disabled = true;
+      openButton.classList.add("is-hidden");
+      setAuthMessage("Invalid login details.", "error");
       return;
     }
+
+    openButton.disabled = false;
+    openButton.classList.remove("is-hidden");
+    setAuthMessage("Login successful. You can open the dashboard now.", "success");
+    passwordInput.value = "";
+  });
+
+  openButton.addEventListener("click", () => {
     window.open(dashboardUrl, "_blank", "noopener");
   });
 }

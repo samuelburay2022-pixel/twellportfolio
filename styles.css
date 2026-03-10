@@ -1073,37 +1073,53 @@ body.doc-viewer-open {
   color: var(--muted);
 }
 
-.visitors-grid {
+.visitors-simple {
   margin-top: 1rem;
-  display: grid;
-  gap: 0.9rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.visitors-card {
+  max-width: 640px;
   padding: 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--surface-soft);
   display: grid;
-  gap: 0.6rem;
-  align-content: start;
+  gap: 0.7rem;
 }
 
-.visitors-card h3 {
+.visitors-simple h3 {
   font-size: 1.22rem;
 }
 
-.visitors-card p,
-.visitors-card ul {
-  color: var(--muted);
+.visitors-login-form {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.visitors-card ul {
-  margin: 0;
-  padding-left: 1.2rem;
+.visitors-login-form label {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.25rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.visitors-login-form input {
+  min-height: 2.45rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font: inherit;
+}
+
+.visitors-login-form input:focus-visible {
+  outline: 2px solid rgba(2, 132, 199, 0.3);
+  outline-offset: 1px;
+}
+
+.visitors-login-form button {
+  grid-column: 1 / -1;
+  width: fit-content;
 }
 
 .visitors-status {
@@ -1111,8 +1127,22 @@ body.doc-viewer-open {
   font-weight: 700;
 }
 
-.visitors-note {
+.visitors-auth-message {
+  min-height: 1.2em;
+  color: var(--muted);
   font-size: 0.86rem;
+}
+
+.visitors-auth-message.is-error {
+  color: #b91c1c;
+}
+
+.visitors-auth-message.is-success {
+  color: #166534;
+}
+
+.visitors-dashboard-button.is-hidden {
+  display: none;
 }
 
 #open-visitors-dashboard[disabled] {
@@ -1479,8 +1509,11 @@ body.doc-viewer-open {
 
   .philosophy-layout,
   .credentials-grid,
-  .projects-grid,
-  .visitors-grid {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visitors-login-form {
     grid-template-columns: 1fr;
   }
 
