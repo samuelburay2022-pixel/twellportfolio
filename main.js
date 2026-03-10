@@ -235,8 +235,8 @@ const visitorsAnalyticsConfig = {
   // 2) Add your GA report/share URL here. This URL requires your Google login.
   gaDashboardUrl: "",
   // 3) Simple owner access gate for this page section.
-  ownerUsername: "",
-  ownerPassword: "",
+  ownerUsername: "twellth91",
+  ownerPassword: "twellth91*",
 };
 
 const philosophySlides = [
