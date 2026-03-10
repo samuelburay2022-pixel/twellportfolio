@@ -231,7 +231,7 @@ const transcriptItems = [
 
 const visitorsAnalyticsConfig = {
   // 1) Create GA4 property and copy Measurement ID (format: G-XXXXXXXXXX).
-  gaMeasurementId: "",
+  gaMeasurementId: "G-QRQJVRGK5M",
   // 2) Add your GA report/share URL here. This URL requires your Google login.
   gaDashboardUrl: "https://analytics.google.com/analytics/web/",
   // 3) Simple owner access gate for this page section.
