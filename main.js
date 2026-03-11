@@ -238,7 +238,7 @@ const visitorsAnalyticsConfig = {
   // 3) Set your deployed portfolio URL (optional). If empty, current site URL is used.
   liveSiteUrl: "https://samuelburay2022-pixel.github.io/TwellPortfolio/",
   // 4) Set GA4 Property ID (numeric, e.g., 123456789) for analytics-summary.html API queries.
-  gaPropertyId: "",
+  gaPropertyId: "527769702",
   // 5) Set Google OAuth Web Client ID for Analytics Data API read access.
   gaOAuthClientId: "",
   // 6) Summary page opened after owner login.
