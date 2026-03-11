@@ -240,7 +240,7 @@ const visitorsAnalyticsConfig = {
   // 4) Set GA4 Property ID (numeric, e.g., 123456789) for analytics-summary.html API queries.
   gaPropertyId: "527769702",
   // 5) Set Google OAuth Web Client ID for Analytics Data API read access.
-  gaOAuthClientId: "",
+  gaOAuthClientId: "182752428348-4kqf7ejk69tlq89ciq5t5eot6agfsnpv.apps.googleusercontent.com",
   // 6) Summary page opened after owner login.
   analyticsSummaryPage: "analytics-summary.html",
   // 7) Simple owner access gate for this page section.
