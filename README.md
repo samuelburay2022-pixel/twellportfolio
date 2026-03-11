@@ -19,7 +19,10 @@ This is a lightweight static teaching portfolio site. Open `index.html` directly
 - `TeachingInnovation_Project/`: teaching innovation and application project brief page
 - `analytics-summary.html`: owner analytics summary page (views/day, country/place, time)
 - `analytics-summary.css`: styling for analytics summary page
-- `analytics-summary.js`: GA4 summary data loading via Google Analytics Data API
+- `analytics-summary.js`: auto snapshot loading + optional manual GA live query
+- `data/analytics-summary.json`: published analytics snapshot consumed by the summary page
+- `scripts/fetch_ga_summary.py`: GA4 data fetch script for scheduled automation
+- `.github/workflows/update-analytics-summary.yml`: hourly GitHub Actions pipeline for analytics snapshot updates
 
 ## Customize
 
@@ -36,3 +39,16 @@ This is a lightweight static teaching portfolio site. Open `index.html` directly
 - Update book and innovation project brief pages in `Books_Project/index.html` and `TeachingInnovation_Project/index.html`.
 - Configure analytics summary access in `main.js` under `visitorsAnalyticsConfig` (`liveSiteUrl`, `gaPropertyId`, `gaOAuthClientId`, `analyticsSummaryPage`).
 - If you add new PDF files, generate a thumbnail into `assets/pdf-previews/` so cards show image previews.
+
+## Auto Analytics Setup (Recommended)
+
+1. In Google Cloud, enable the **Analytics Data API**.
+2. Create a **Service Account** and download its JSON key.
+3. In GA4 property `527769702`, add the service account email as at least **Viewer**.
+4. In GitHub repo settings, add these Secrets:
+   - `GA_PROPERTY_ID` = `527769702`
+   - `GA_MEASUREMENT_ID` = `G-QRQJVRGK5M`
+   - `GA_SERVICE_ACCOUNT_JSON` = full service-account JSON content
+5. Run workflow **Update Analytics Summary** once manually (Actions tab), then it runs hourly.
+
+This updates `data/analytics-summary.json` automatically, and `analytics-summary.html` loads it without manual Google login.

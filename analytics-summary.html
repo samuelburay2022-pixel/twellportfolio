@@ -8,7 +8,7 @@
       name="description"
       content="Owner analytics summary page with GA4 daily views, country/place, and time-based traffic."
     />
-    <link rel="stylesheet" href="analytics-summary.css?v=20260311a2" />
+    <link rel="stylesheet" href="analytics-summary.css?v=20260311a3" />
     <script async src="https://accounts.google.com/gsi/client"></script>
   </head>
   <body>
@@ -42,7 +42,7 @@
         <h1>Google Analytics Summary</h1>
         <p class="lead">
           This page summarizes the metrics you requested: views per day, top countries/places,
-          and time-based traffic by hour.
+          and time-based traffic by hour. Data auto-updates from a scheduled pipeline.
         </p>
 
         <div class="meta-grid">
@@ -70,13 +70,13 @@
 
         <div class="actions">
           <button class="button button-primary" id="ga-connect-button" type="button">
-            Connect Google Analytics
+            Connect Google Analytics (Manual)
           </button>
           <button class="button button-secondary" id="ga-refresh-button" type="button" disabled>
-            Refresh Summary
+            Refresh Live Query
           </button>
         </div>
-        <p class="status-line" id="ga-status-line">Ready.</p>
+        <p class="status-line" id="ga-status-line">Loading latest analytics snapshot...</p>
       </section>
 
       <section class="stats-grid">
@@ -91,6 +91,10 @@
         <article class="card stat-card">
           <p>Peak Time (Last 7 days)</p>
           <h2 id="stat-peak-hour">-</h2>
+        </article>
+        <article class="card stat-card">
+          <p>Active Users Now (Approx)</p>
+          <h2 id="stat-active-users">-</h2>
         </article>
       </section>
 
@@ -108,9 +112,7 @@
               </tr>
             </thead>
             <tbody id="daily-views-body">
-              <tr>
-                <td colspan="2">Connect Google Analytics to load data.</td>
-              </tr>
+              <tr><td colspan="2">Loading snapshot...</td></tr>
             </tbody>
           </table>
         </div>
@@ -130,9 +132,7 @@
               </tr>
             </thead>
             <tbody id="country-views-body">
-              <tr>
-                <td colspan="2">Connect Google Analytics to load data.</td>
-              </tr>
+              <tr><td colspan="2">Loading snapshot...</td></tr>
             </tbody>
           </table>
         </div>
@@ -152,15 +152,13 @@
               </tr>
             </thead>
             <tbody id="hourly-views-body">
-              <tr>
-                <td colspan="2">Connect Google Analytics to load data.</td>
-              </tr>
+              <tr><td colspan="2">Loading snapshot...</td></tr>
             </tbody>
           </table>
         </div>
       </section>
     </main>
 
-    <script src="analytics-summary.js?v=20260311a4"></script>
+    <script src="analytics-summary.js?v=20260311a5"></script>
   </body>
 </html>

@@ -1,0 +1,27 @@
+{
+  "generatedAtUtc": "",
+  "measurementId": "G-QRQJVRGK5M",
+  "propertyId": "527769702",
+  "timezone": "",
+  "stats": {
+    "totalViews14d": 0,
+    "topCountry": {
+      "country": "",
+      "views": 0
+    },
+    "peakHour": {
+      "hour": 0,
+      "hourLabel": "",
+      "views": 0
+    },
+    "activeUsersNow": 0
+  },
+  "dailyViews": [],
+  "countryViews": [],
+  "hourlyViews": [],
+  "realtime": {
+    "activeUsers": 0,
+    "topCountries": [],
+    "topCities": []
+  }
+}
