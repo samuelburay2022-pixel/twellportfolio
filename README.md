@@ -14,6 +14,12 @@ This is a lightweight static teaching portfolio site. Open `index.html` directly
 - `Teaching_Photos/`: teaching gallery image files
 - `Certificates_Files/`: certificate image/PDF files
 - `Transcripts/`: transcript and academic credential files
+- `SchoolSystem_Project/`: Digital Edu Pro project brief, feature docs, and system screenshots
+- `Books_Project/`: books project brief page
+- `TeachingInnovation_Project/`: teaching innovation and application project brief page
+- `analytics-summary.html`: owner analytics summary page (views/day, country/place, time)
+- `analytics-summary.css`: styling for analytics summary page
+- `analytics-summary.js`: GA4 summary data loading via Google Analytics Data API
 
 ## Customize
 
@@ -26,4 +32,7 @@ This is a lightweight static teaching portfolio site. Open `index.html` directly
 - Add or remove extra top-row logos in `main.js` under `extraLogoItems` (horizontal row above the main logo grid).
 - Edit highlighted credential logos below the profile photo in `main.js` under `highlightLogoItems` (for MCE and NBDB).
 - Put new teaching images in `Teaching_Photos/`, certificate files in `Certificates_Files/`, and transcript files in `Transcripts/`.
+- Update the school system project page/content in `SchoolSystem_Project/index.html` and `SchoolSystem_Project/FEATURES.md`.
+- Update book and innovation project brief pages in `Books_Project/index.html` and `TeachingInnovation_Project/index.html`.
+- Configure analytics summary access in `main.js` under `visitorsAnalyticsConfig` (`liveSiteUrl`, `gaPropertyId`, `gaOAuthClientId`, `analyticsSummaryPage`).
 - If you add new PDF files, generate a thumbnail into `assets/pdf-previews/` so cards show image previews.

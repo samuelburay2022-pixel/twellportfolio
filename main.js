@@ -5,7 +5,8 @@
   3) Add / edit / delete teaching photos in the `teachingPhotos` list.
   4) Add / edit / delete certificates in the `certificateItems` list.
   5) Add / edit / delete transcripts in the `transcriptItems` list.
-  6) Keep file paths relative to this project root.
+  6) Configure owner analytics page settings in `visitorsAnalyticsConfig`.
+  7) Keep file paths relative to this project root.
 */
 
 const teachingPhotos = [
@@ -234,7 +235,15 @@ const visitorsAnalyticsConfig = {
   gaMeasurementId: "G-QRQJVRGK5M",
   // 2) Add your GA report/share URL here. This URL requires your Google login.
   gaDashboardUrl: "https://analytics.google.com/analytics/web/",
-  // 3) Simple owner access gate for this page section.
+  // 3) Set your deployed portfolio URL (optional). If empty, current site URL is used.
+  liveSiteUrl: "https://samuelburay2022-pixel.github.io/TwellPortfolio/",
+  // 4) Set GA4 Property ID (numeric, e.g., 123456789) for analytics-summary.html API queries.
+  gaPropertyId: "",
+  // 5) Set Google OAuth Web Client ID for Analytics Data API read access.
+  gaOAuthClientId: "",
+  // 6) Summary page opened after owner login.
+  analyticsSummaryPage: "analytics-summary.html",
+  // 7) Simple owner access gate for this page section.
   ownerUsername: "twellth91",
   ownerPassword: "twellth91*",
 };
@@ -660,6 +669,10 @@ function initializeOwnerLoginPopup() {
 
   const measurementId = visitorsAnalyticsConfig.gaMeasurementId.trim();
   const dashboardUrl = visitorsAnalyticsConfig.gaDashboardUrl.trim();
+  const liveSiteUrl = (visitorsAnalyticsConfig.liveSiteUrl || "").trim();
+  const propertyId = (visitorsAnalyticsConfig.gaPropertyId || "").trim();
+  const oauthClientId = (visitorsAnalyticsConfig.gaOAuthClientId || "").trim();
+  const analyticsSummaryPage = (visitorsAnalyticsConfig.analyticsSummaryPage || "analytics-summary.html").trim();
   const ownerUsername = visitorsAnalyticsConfig.ownerUsername.trim();
   const ownerPassword = visitorsAnalyticsConfig.ownerPassword || "";
 
@@ -710,17 +723,16 @@ function initializeOwnerLoginPopup() {
     loadGoogleAnalytics(measurementId);
   }
 
-  if (!dashboardUrl) {
-    status.textContent = "Set gaDashboardUrl in main.js.";
-    submitButton.disabled = true;
-    setMessage("Dashboard link is not configured.", "error");
-  } else if (!ownerUsername || !ownerPassword) {
+  if (!ownerUsername || !ownerPassword) {
     status.textContent = "Set ownerUsername and ownerPassword in main.js.";
     submitButton.disabled = true;
     setMessage("Owner login details are not configured yet.", "error");
   } else {
     status.textContent = "Enter your Admin/Owner login details.";
     submitButton.disabled = false;
+    if (!propertyId || !oauthClientId) {
+      setMessage("Add gaPropertyId and gaOAuthClientId in main.js to load charts in Analytics Summary.");
+    }
   }
 
   trigger.addEventListener("click", openModal);
@@ -730,7 +742,7 @@ function initializeOwnerLoginPopup() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    if (!dashboardUrl || !ownerUsername || !ownerPassword) {
+    if (!ownerUsername || !ownerPassword) {
       return;
     }
 
@@ -743,8 +755,26 @@ function initializeOwnerLoginPopup() {
       return;
     }
 
-    setMessage("Login successful. Opening dashboard...", "success");
-    window.open(dashboardUrl, "_blank", "noopener");
+    const summaryUrl = new URL(analyticsSummaryPage || "analytics-summary.html", window.location.href);
+    if (dashboardUrl) {
+      summaryUrl.searchParams.set("dashboard", dashboardUrl);
+    }
+    const resolvedLiveSiteUrl = liveSiteUrl || new URL("index.html", window.location.href).toString();
+    if (resolvedLiveSiteUrl) {
+      summaryUrl.searchParams.set("liveSite", resolvedLiveSiteUrl);
+    }
+    if (measurementId) {
+      summaryUrl.searchParams.set("measurementId", measurementId);
+    }
+    if (propertyId) {
+      summaryUrl.searchParams.set("propertyId", propertyId);
+    }
+    if (oauthClientId) {
+      summaryUrl.searchParams.set("oauthClientId", oauthClientId);
+    }
+
+    setMessage("Login successful. Opening analytics summary...", "success");
+    window.open(summaryUrl.toString(), "_blank", "noopener");
     passwordInput.value = "";
     setTimeout(() => {
       closeModal();

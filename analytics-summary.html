@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Analytics Summary | Samuel Jr. Pana Buray</title>
+    <meta
+      name="description"
+      content="Owner analytics summary page with GA4 daily views, country/place, and time-based traffic."
+    />
+    <link rel="stylesheet" href="analytics-summary.css?v=20260311a2" />
+    <script async src="https://accounts.google.com/gsi/client"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="topbar-link" href="index.html#contact">Back to Portfolio</a>
+      <div class="topbar-actions">
+        <a
+          class="topbar-link"
+          id="open-live-site-link"
+          href="index.html"
+          target="_blank"
+          rel="noopener"
+        >
+          Open Live Site
+        </a>
+        <a
+          class="topbar-link topbar-link-primary"
+          id="open-dashboard-link"
+          href="https://analytics.google.com/analytics/web/"
+          target="_blank"
+          rel="noopener"
+        >
+          Open Full GA Dashboard
+        </a>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card hero">
+        <p class="eyebrow">Owner Analytics</p>
+        <h1>Google Analytics Summary</h1>
+        <p class="lead">
+          This page summarizes the metrics you requested: views per day, top countries/places,
+          and time-based traffic by hour.
+        </p>
+
+        <div class="meta-grid">
+          <article class="meta-item">
+            <p>Measurement ID</p>
+            <strong id="meta-measurement-id">Not set</strong>
+          </article>
+          <article class="meta-item">
+            <p>Live Site URL</p>
+            <strong id="meta-live-site-url">Not set</strong>
+          </article>
+          <article class="meta-item">
+            <p>Property ID</p>
+            <strong id="meta-property-id">Not set</strong>
+          </article>
+          <article class="meta-item">
+            <p>Timezone</p>
+            <strong id="meta-timezone">Not loaded</strong>
+          </article>
+          <article class="meta-item">
+            <p>Last Refresh</p>
+            <strong id="meta-last-refresh">Not loaded</strong>
+          </article>
+        </div>
+
+        <div class="actions">
+          <button class="button button-primary" id="ga-connect-button" type="button">
+            Connect Google Analytics
+          </button>
+          <button class="button button-secondary" id="ga-refresh-button" type="button" disabled>
+            Refresh Summary
+          </button>
+        </div>
+        <p class="status-line" id="ga-status-line">Ready.</p>
+      </section>
+
+      <section class="stats-grid">
+        <article class="card stat-card">
+          <p>Total Views (14 days)</p>
+          <h2 id="stat-total-views">-</h2>
+        </article>
+        <article class="card stat-card">
+          <p>Top Country/Place (30 days)</p>
+          <h2 id="stat-top-country">-</h2>
+        </article>
+        <article class="card stat-card">
+          <p>Peak Time (Last 7 days)</p>
+          <h2 id="stat-peak-hour">-</h2>
+        </article>
+      </section>
+
+      <section class="card report-card">
+        <div class="report-head">
+          <h3>Views Per Day</h3>
+          <p>Last 14 days</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Views</th>
+              </tr>
+            </thead>
+            <tbody id="daily-views-body">
+              <tr>
+                <td colspan="2">Connect Google Analytics to load data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card report-card">
+        <div class="report-head">
+          <h3>Country / Place</h3>
+          <p>Top 10 in the last 30 days</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Country / Place</th>
+                <th>Views</th>
+              </tr>
+            </thead>
+            <tbody id="country-views-body">
+              <tr>
+                <td colspan="2">Connect Google Analytics to load data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card report-card">
+        <div class="report-head">
+          <h3>Time-Based Traffic</h3>
+          <p>Views by hour (last 7 days, property timezone)</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>Views</th>
+              </tr>
+            </thead>
+            <tbody id="hourly-views-body">
+              <tr>
+                <td colspan="2">Connect Google Analytics to load data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="analytics-summary.js?v=20260311a2"></script>
+  </body>
+</html>
