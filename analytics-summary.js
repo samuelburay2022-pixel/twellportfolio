@@ -1,11 +1,19 @@
 (function initializeAnalyticsSummaryPage() {
   const query = new URLSearchParams(window.location.search);
+  const defaultConfig = {
+    measurementId: "G-QRQJVRGK5M",
+    liveSiteUrl: "https://samuelburay2022-pixel.github.io/TwellPortfolio/",
+    propertyId: "527769702",
+    oauthClientId: "182752428348-4kqf7ejk69tlq89ciq5t5eot6agfsnpv.apps.googleusercontent.com",
+    dashboardUrl: "https://analytics.google.com/analytics/web/",
+  };
+
   const config = {
-    measurementId: (query.get("measurementId") || "").trim(),
-    liveSiteUrl: (query.get("liveSite") || "").trim(),
-    propertyId: (query.get("propertyId") || "").trim(),
-    oauthClientId: (query.get("oauthClientId") || "").trim(),
-    dashboardUrl: (query.get("dashboard") || "https://analytics.google.com/analytics/web/").trim(),
+    measurementId: (query.get("measurementId") || defaultConfig.measurementId).trim(),
+    liveSiteUrl: (query.get("liveSite") || defaultConfig.liveSiteUrl).trim(),
+    propertyId: (query.get("propertyId") || defaultConfig.propertyId).trim(),
+    oauthClientId: (query.get("oauthClientId") || defaultConfig.oauthClientId).trim(),
+    dashboardUrl: (query.get("dashboard") || defaultConfig.dashboardUrl).trim(),
   };
 
   const connectButton = document.getElementById("ga-connect-button");
