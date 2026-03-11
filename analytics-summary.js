@@ -101,6 +101,28 @@
     return new Intl.NumberFormat().format(value);
   };
 
+  const extractApiErrorMessage = (rawErrorText, fallbackStatusCode) => {
+    if (!rawErrorText) {
+      return `Request failed (${fallbackStatusCode}).`;
+    }
+
+    try {
+      const parsed = JSON.parse(rawErrorText);
+      const details = parsed?.error;
+      if (details?.message) {
+        return details.message;
+      }
+      if (details?.status) {
+        return `Request failed (${details.status}).`;
+      }
+    } catch (_error) {
+      // Keep fallback below when response is not JSON.
+    }
+
+    const compact = rawErrorText.replace(/\s+/g, " ").trim();
+    return compact || `Request failed (${fallbackStatusCode}).`;
+  };
+
   const formatDate = (yyyymmdd) => {
     if (!yyyymmdd || yyyymmdd.length !== 8) {
       return yyyymmdd || "-";
@@ -164,7 +186,7 @@
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(errorText || `Request failed with status ${response.status}`);
+      throw new Error(extractApiErrorMessage(errorText, response.status));
     }
 
     return response.json();
@@ -252,10 +274,10 @@
       setStatus("Analytics summary updated.", "success");
     } catch (error) {
       console.error(error);
-      setStatus(
-        "Unable to load summary data. Check gaPropertyId, gaOAuthClientId, and your GA access.",
-        "error"
-      );
+      const detail = error && error.message ? error.message : "Unknown error";
+      const hint =
+        " Check property access, enable Analytics Data API, and confirm OAuth authorized origins.";
+      setStatus(`Unable to load summary data: ${detail}.${hint}`, "error");
     } finally {
       refreshButton.disabled = false;
     }
