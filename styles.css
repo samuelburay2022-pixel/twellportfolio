@@ -1987,6 +1987,39 @@ li {
   }
 }
 
+@media (min-width: 721px) and (max-width: 1024px) {
+  .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 0.7rem 0.78rem;
+    gap: 0.6rem;
+  }
+
+  .brand {
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.25;
+    letter-spacing: 0.06em;
+    font-size: 0.74rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    gap: 0.34rem;
+    padding-bottom: 0;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    padding: 0.34rem 0.56rem;
+  }
+
+  .topbar-cta {
+    justify-self: flex-end;
+  }
+}
+
 @media (max-width: 720px) {
   .topbar {
     position: static;

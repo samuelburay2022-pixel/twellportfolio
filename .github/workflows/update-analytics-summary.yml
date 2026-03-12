@@ -23,11 +23,42 @@ jobs:
       - name: Install dependencies
         run: pip install --upgrade google-auth requests
 
-      - name: Fetch GA summary
+      - name: Resolve GA config
         env:
-          GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}
-          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
-          GA_SERVICE_ACCOUNT_JSON: ${{ secrets.GA_SERVICE_ACCOUNT_JSON }}
+          GA_PROPERTY_ID_SECRET: ${{ secrets.GA_PROPERTY_ID }}
+          GA_PROPERTY_ID_VAR: ${{ vars.GA_PROPERTY_ID }}
+          GA_MEASUREMENT_ID_SECRET: ${{ secrets.GA_MEASUREMENT_ID }}
+          GA_MEASUREMENT_ID_VAR: ${{ vars.GA_MEASUREMENT_ID }}
+          GA_SERVICE_ACCOUNT_JSON_SECRET: ${{ secrets.GA_SERVICE_ACCOUNT_JSON }}
+          GA_SERVICE_ACCOUNT_JSON_VAR: ${{ vars.GA_SERVICE_ACCOUNT_JSON }}
+        run: |
+          ga_property_id="${GA_PROPERTY_ID_SECRET:-$GA_PROPERTY_ID_VAR}"
+          ga_measurement_id="${GA_MEASUREMENT_ID_SECRET:-$GA_MEASUREMENT_ID_VAR}"
+          ga_service_account_json="${GA_SERVICE_ACCOUNT_JSON_SECRET:-$GA_SERVICE_ACCOUNT_JSON_VAR}"
+
+          if [ -z "$ga_property_id" ]; then
+            echo "::error::Missing GA_PROPERTY_ID. Add it in GitHub Secrets or Variables."
+            exit 1
+          fi
+          if [ -z "$ga_service_account_json" ]; then
+            echo "::error::Missing GA_SERVICE_ACCOUNT_JSON. Add it in GitHub Secrets or Variables."
+            exit 1
+          fi
+
+          if [ -z "$ga_measurement_id" ]; then
+            ga_measurement_id="G-QRQJVRGK5M"
+            echo "::notice::GA_MEASUREMENT_ID not set. Using default $ga_measurement_id."
+          fi
+
+          {
+            echo "GA_PROPERTY_ID=$ga_property_id"
+            echo "GA_MEASUREMENT_ID=$ga_measurement_id"
+            echo "GA_SERVICE_ACCOUNT_JSON<<EOF"
+            echo "$ga_service_account_json"
+            echo "EOF"
+          } >> "$GITHUB_ENV"
+
+      - name: Fetch GA summary
         run: python3 scripts/fetch_ga_summary.py
 
       - name: Commit and push if changed

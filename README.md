@@ -45,7 +45,7 @@ This is a lightweight static teaching portfolio site. Open `index.html` directly
 1. In Google Cloud, enable the **Analytics Data API**.
 2. Create a **Service Account** and download its JSON key.
 3. In GA4 property `527769702`, add the service account email as at least **Viewer**.
-4. In GitHub repo settings, add these Secrets:
+4. In GitHub repo settings, add these values as **Secrets** (recommended) or **Variables**:
    - `GA_PROPERTY_ID` = `527769702`
    - `GA_MEASUREMENT_ID` = `G-QRQJVRGK5M`
    - `GA_SERVICE_ACCOUNT_JSON` = full service-account JSON content
