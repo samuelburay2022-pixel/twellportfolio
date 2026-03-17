@@ -146,6 +146,11 @@ const certificateItems = [
     description: "Core educator certification from Microsoft.",
   },
   {
+    file: "Certificates_Files/Google_Level2.jpg",
+    title: "Google Certified Educator Level 2",
+    description: "Official Google for Education Level 2 educator certification.",
+  },
+  {
     file: "Certificates_Files/Robotics_VexIQ_Certificate.pdf",
     title: "VEX IQ Robotics Certificate",
     description: "Robotics training and classroom application certification.",
