@@ -151,6 +151,21 @@ const certificateItems = [
     description: "Official Google for Education Level 2 educator certification.",
   },
   {
+    file: "Certificates_Files/Google_Certified_Educator_Lvl1.pdf",
+    title: "Google Certified Educator Level 1",
+    description: "Official Google for Education Level 1 educator certification.",
+  },
+  {
+    file: "Certificates_Files/Google_Certified_Educator_Lvl2.pdf",
+    title: "Google Certified Educator Level 2 (PDF)",
+    description: "Official PDF credential for Google for Education Level 2.",
+  },
+  {
+    file: "Certificates_Files/education-2030 UNESCO-06 Certificate _ UNESCO Open Learning.pdf",
+    title: "UNESCO Open Learning Certificate",
+    description: "Education 2030 professional learning certificate from UNESCO.",
+  },
+  {
     file: "Certificates_Files/Robotics_VexIQ_Certificate.pdf",
     title: "VEX IQ Robotics Certificate",
     description: "Robotics training and classroom application certification.",
