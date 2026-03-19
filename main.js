@@ -161,6 +161,11 @@ const certificateItems = [
     description: "Official PDF credential for Google for Education Level 2.",
   },
   {
+    file: "Certificates_Files/Gemini_Certified_Educator.pdf",
+    title: "Gemini Certified Educator",
+    description: "Professional certification for classroom use of Google Gemini tools.",
+  },
+  {
     file: "Certificates_Files/education-2030 UNESCO-06 Certificate _ UNESCO Open Learning.pdf",
     title: "UNESCO Open Learning Certificate",
     description: "Education 2030 professional learning certificate from UNESCO.",
