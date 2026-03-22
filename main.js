@@ -171,6 +171,11 @@ const certificateItems = [
     description: "Education 2030 professional learning certificate from UNESCO.",
   },
   {
+    file: "Certificates_Files/Unesco_2026.pdf",
+    title: "UNESCO Certificate 2026",
+    description: "UNESCO professional learning and training certificate (2026).",
+  },
+  {
     file: "Certificates_Files/Robotics_VexIQ_Certificate.pdf",
     title: "VEX IQ Robotics Certificate",
     description: "Robotics training and classroom application certification.",
