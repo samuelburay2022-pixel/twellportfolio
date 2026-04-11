@@ -5,8 +5,10 @@
   3) Add / edit / delete teaching photos in the `teachingPhotos` list.
   4) Add / edit / delete certificates in the `certificateItems` list.
   5) Add / edit / delete transcripts in the `transcriptItems` list.
-  6) Configure owner analytics page settings in `visitorsAnalyticsConfig`.
-  7) Keep file paths relative to this project root.
+  6) Add / edit content manager work in the `contentManager...` lists.
+  7) Add / edit operations app logos in `operationsApplicationLogoItems`.
+  8) Configure owner analytics page settings in `visitorsAnalyticsConfig`.
+  9) Keep file paths relative to this project root.
 */
 
 const teachingPhotos = [
@@ -166,6 +168,16 @@ const certificateItems = [
     description: "Professional certification for classroom use of Google Gemini tools.",
   },
   {
+    file: "Certificates_Files/Certificate_for_Introduction_to_Technology_for_Teaching_and_Learning_(March_2026)-CA_154437.pdf",
+    title: "Introduction to Technology for Teaching and Learning",
+    description: "Professional learning certificate for technology-supported teaching and learning practice.",
+  },
+  {
+    file: "Certificates_Files/Certificate_for_Practical_Home_Behavior_Management_for_Children_with_Special_Needs_(February_2026)-CA_146624.pdf",
+    title: "Practical Home Behavior Management",
+    description: "Professional learning certificate for supporting children with special needs through practical behavior management strategies.",
+  },
+  {
     file: "Certificates_Files/education-2030 UNESCO-06 Certificate _ UNESCO Open Learning.pdf",
     title: "UNESCO Open Learning Certificate",
     description: "Education 2030 professional learning certificate from UNESCO.",
@@ -257,6 +269,229 @@ const transcriptItems = [
     file: "Transcripts/MEM_Credentials.pdf",
     title: "MEM Credentials",
     description: "Master of Education in Educational Management credentials.",
+  },
+];
+
+const contentManagerEvidenceItems = [
+  {
+    file: "Content Manager Portfolio/Camp Posters/1.png",
+    preview: "Content Manager Portfolio/Camp Posters/1.png",
+    typeLabel: "WEB",
+    title: "Classes and Camps Website Content",
+    description: "Saved booking-page evidence for organizing classes, camps, parties, services, and parent-facing program information.",
+    buttonLabel: "Preview Page",
+    previewOnly: true,
+    hideFullFile: true,
+  },
+  {
+    file: "Content Manager Portfolio/Birthday_Planner_guide.png",
+    title: "Birthday Planning Guide",
+    description: "A parent-friendly guide that explains timing, support, house rules, food setup, and contact steps.",
+    isTall: true,
+  },
+  {
+    file: "Content Manager Portfolio/Automation_Release_of_Liability_and_Indemnity Agreement.png",
+    title: "Enrollment Automation Workflow",
+    description: "A visual explanation of registration, email delivery, form completion, record keeping, and parent follow-up.",
+    isTall: true,
+  },
+  {
+    file: "Content Manager Portfolio/GoogleWorspaceTraining_ScreenShot.jpeg",
+    title: "Google Workspace Training",
+    description: "Team training evidence for improving shared documents, communication routines, and digital collaboration.",
+  },
+  {
+    file: "Content Manager Portfolio/10.jpg",
+    preview: "Content Manager Portfolio/10.jpg",
+    typeLabel: "PDF",
+    title: "Student Progress Reporting System",
+    description: "A system-components PDF for explaining school reporting structure, performance data, and workflow planning.",
+    previewOnly: true,
+    hideFullFile: true,
+  },
+  {
+    file: "assets/pdf-previews/The Village Alliance Mail - \u{1F389} Your Tuesday Yoga at VKC is Coming Up!.pdf.png",
+    preview: "assets/pdf-previews/The Village Alliance Mail - \u{1F389} Your Tuesday Yoga at VKC is Coming Up!.pdf.png",
+    typeLabel: "PDF",
+    title: "Email Campaign Example",
+    description: "A campaign email PDF showing audience communication, reminder structure, and brand-consistent parent messaging.",
+    previewOnly: true,
+    hideFullFile: true,
+    isTall: true,
+  },
+];
+
+const contentManagerVideoItems = [
+  {
+    file: "Content Manager Portfolio/Alameda Video Teaser.mp4",
+    title: "Alameda Video Teaser",
+    description: "Community-facing teaser video for local family awareness.",
+  },
+  {
+    file: "Content Manager Portfolio/Afterschool_Teaser.mp4",
+    title: "Afterschool Teaser",
+    description: "Portrait-format promotional video for afterschool program discovery.",
+    layout: "portrait",
+  },
+  {
+    file: "Content Manager Portfolio/services_video.mp4",
+    title: "Services Video",
+    description: "Overview video presenting available services in a clear promotional flow.",
+  },
+  {
+    file: "Content Manager Portfolio/Junior Chef Academy .mp4",
+    title: "Junior Chef Academy",
+    description: "Program video for a hands-on cooking and creative learning experience.",
+  },
+  {
+    file: "Content Manager Portfolio/Space_Robots_Laser_Camp.mp4",
+    title: "Space Robots Laser Camp",
+    description: "Camp campaign video for robotics, space, and maker-learning themes.",
+  },
+  {
+    file: "Content Manager Portfolio/Thrill Builders Camp.mp4",
+    title: "Thrill Builders Camp",
+    description: "Camp video for roller coaster engineering and build-based learning.",
+  },
+  {
+    file: "Content Manager Portfolio/TheArcOfLearning.mp4",
+    title: "The Arc of Learning",
+    description: "Portrait-format learning story video for social media promotion.",
+    layout: "portrait",
+  },
+  {
+    file: "Content Manager Portfolio/Instgram_Post.mp4",
+    title: "Instagram Post",
+    description: "Short social post formatted for feed-first campaign use.",
+    layout: "portrait",
+  },
+  {
+    file: "Content Manager Portfolio/Summer Lunch Party.mp4",
+    title: "Summer Lunch Party",
+    description: "Event clip for lightweight social engagement and parent updates.",
+  },
+  {
+    file: "Content Manager Portfolio/Best in Alameda!.mp4",
+    title: "Best in Alameda",
+    description: "Wide promotional banner video for quick community recognition.",
+    layout: "wide",
+  },
+];
+
+const contentManagerPosterItems = Array.from({ length: 16 }, (_, index) => ({
+  file: `Content Manager Portfolio/Camp Posters/${index + 1}.png`,
+  title: `Camp Poster ${String(index + 1).padStart(2, "0")}`,
+  description: "Square campaign poster for a themed learning camp.",
+}));
+
+const contentManagerWorkSampleItems = [
+  {
+    file: "Content Manager Portfolio/3.jpg",
+    title: "Camp-Based Learning Programs",
+    description: "Workbook and course creation for structured, age-appropriate camp learning.",
+  },
+  {
+    file: "Content Manager Portfolio/4.jpg",
+    title: "Workbook and Course Samples",
+    description: "A sample set of phonics, grammar, and completion-certificate materials.",
+  },
+  {
+    file: "Content Manager Portfolio/5.jpg",
+    title: "Creative Design Work",
+    description: "Covers, badges, activity pages, social graphics, and teaser presentations.",
+  },
+  {
+    file: "Content Manager Portfolio/6.jpg",
+    title: "Camp and Junior Chef Assets",
+    description: "Visual samples for camp themes, world exploration, and cooking programs.",
+  },
+  {
+    file: "Content Manager Portfolio/7.jpg",
+    title: "Reading Adventure Promo",
+    description: "Promotional visual for connecting reading content with local adventure themes.",
+  },
+  {
+    file: "Content Manager Portfolio/8.jpg",
+    title: "Reading Social Campaign",
+    description: "Mobile-first social examples for reading engagement and book promotion.",
+  },
+  {
+    file: "Content Manager Portfolio/9.jpg",
+    title: "Google Sheets and Data Work",
+    description: "Data-driven tools for tracking, dashboards, charts, and simple reporting.",
+  },
+  {
+    file: "Content Manager Portfolio/10.jpg",
+    title: "Progress Dashboard Samples",
+    description: "Graphical student progress and performance dashboard examples.",
+  },
+  {
+    file: "Content Manager Portfolio/11.jpg",
+    title: "Flip Books and E-Books",
+    description: "Interactive digital book concepts that guide families and learners.",
+  },
+  {
+    file: "Content Manager Portfolio/12.jpg",
+    title: "Book and Worksheet Projects",
+    description: "Book, nursery, computing, and writing-studio samples for learning products.",
+  },
+];
+
+const operationsApplicationLogoItems = [
+  {
+    file: "Operations Application Logo/Gemini.png",
+    title: "Gemini",
+    description: "AI-assisted planning, ideation, and content support.",
+  },
+  {
+    file: "Operations Application Logo/chatgpt.jpg",
+    title: "ChatGPT",
+    description: "Drafting, content refinement, workflow support, and lesson ideation.",
+  },
+  {
+    file: "Operations Application Logo/codex.png",
+    title: "Codex",
+    description: "Website updates, code organization, and technical implementation support.",
+  },
+  {
+    file: "Operations Application Logo/google workspace.jpg",
+    title: "Google Workspace",
+    description: "Team documents, spreadsheets, shared files, and collaborative operations.",
+  },
+  {
+    file: "Operations Application Logo/adobe-express-logo-app-icon-editable-transparent-background-social-media-design-for-digital-download-free-png.webp",
+    title: "Adobe Express",
+    description: "Fast visual design for posters, guides, and campaign assets.",
+  },
+  {
+    file: "Operations Application Logo/wix.png",
+    title: "Wix",
+    description: "Website pages, service listings, forms, and booking content updates.",
+  },
+  {
+    file: "Operations Application Logo/meta.png",
+    title: "Meta",
+    description: "Social media presence, community updates, and campaign distribution.",
+  },
+  {
+    file: "Operations Application Logo/omnisend.webp",
+    title: "Omnisend",
+    description: "Email campaign delivery, reminders, and parent communication flows.",
+  },
+  {
+    file: "Operations Application Logo/hubspot8920.jpg",
+    title: "HubSpot",
+    description: "Contact organization, CRM routines, and communication tracking.",
+  },
+  {
+    file: "Operations Application Logo/sling.png",
+    title: "Sling",
+    description: "Scheduling and team operations support.",
+  },
+  {
+    file: "Operations Application Logo/wave.png",
+    title: "Wave",
+    description: "Invoices, payments, and basic accounting support.",
   },
 ];
 
@@ -574,6 +809,238 @@ function renderDocumentCards(containerId, items, emptyLabel) {
   });
 }
 
+function createContentManagerPreview(item) {
+  const preview = document.createElement("div");
+  preview.className = "content-manager-evidence-preview";
+
+  const typeBadge = document.createElement("span");
+  typeBadge.className = "content-manager-file-type";
+  typeBadge.textContent = item.typeLabel || fileExtension(item.file);
+  preview.appendChild(typeBadge);
+
+  const previewPath = item.preview || (isImageFile(item.file) ? item.file : "");
+
+  if (previewPath) {
+    const image = document.createElement("img");
+    image.src = toPublicUrl(previewPath);
+    image.alt = `${item.title || "Content manager work"} preview`;
+    image.loading = "lazy";
+    if (item.isTall) {
+      image.className = "content-manager-preview-tall";
+    }
+    image.addEventListener("error", () => {
+      image.remove();
+      const placeholder = document.createElement("div");
+      placeholder.className = "content-manager-evidence-placeholder";
+      placeholder.textContent = item.typeLabel || fileExtension(item.file);
+      preview.appendChild(placeholder);
+    });
+    preview.appendChild(image);
+  } else {
+    const placeholder = document.createElement("div");
+    placeholder.className = "content-manager-evidence-placeholder";
+    placeholder.textContent = item.typeLabel || fileExtension(item.file);
+    preview.appendChild(placeholder);
+  }
+
+  return preview;
+}
+
+function renderContentManagerEvidence() {
+  const container = document.getElementById("content-manager-evidence-grid");
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  contentManagerEvidenceItems.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "content-manager-evidence-card";
+    card.setAttribute("data-reveal", "");
+
+    const body = document.createElement("div");
+    body.className = "content-manager-evidence-body";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title || "Content Manager Work";
+
+    const description = document.createElement("p");
+    description.textContent = item.description || "Selected content management evidence.";
+
+    body.appendChild(title);
+    body.appendChild(description);
+
+    if (item.file) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "content-manager-evidence-link";
+      button.textContent = item.buttonLabel || "Preview Work";
+      button.addEventListener("click", () => {
+        openDocumentPreview(item);
+      });
+      body.appendChild(button);
+    }
+
+    card.appendChild(createContentManagerPreview(item));
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+}
+
+function renderContentManagerVideos() {
+  const container = document.getElementById("content-manager-video-grid");
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  contentManagerVideoItems.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "content-manager-video-card";
+    card.setAttribute("data-reveal", "");
+    if (item.layout === "portrait") {
+      card.classList.add("is-vertical");
+    }
+    if (item.layout === "wide") {
+      card.classList.add("is-wide");
+    }
+
+    const video = document.createElement("video");
+    video.controls = true;
+    video.preload = "metadata";
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "true");
+    video.setAttribute("aria-label", item.title || "Content manager video");
+
+    const source = document.createElement("source");
+    source.src = toPublicUrl(item.file);
+    source.type = "video/mp4";
+    video.appendChild(source);
+
+    const body = document.createElement("div");
+    body.className = "content-manager-video-meta";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title || "Video Campaign";
+
+    const description = document.createElement("p");
+    description.textContent = item.description || "Short-form content campaign video.";
+
+    body.appendChild(title);
+    body.appendChild(description);
+
+    card.appendChild(video);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+}
+
+function renderContentManagerPosters() {
+  const container = document.getElementById("content-manager-poster-grid");
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  contentManagerPosterItems.forEach((item) => {
+    const figure = document.createElement("figure");
+    figure.className = "content-manager-poster-card";
+    figure.setAttribute("data-reveal", "");
+
+    const image = document.createElement("img");
+    image.src = toPublicUrl(item.file);
+    image.alt = item.title || "Camp poster";
+    image.loading = "lazy";
+
+    const caption = document.createElement("figcaption");
+    const title = document.createElement("h3");
+    title.textContent = item.title || "Camp Poster";
+    const description = document.createElement("p");
+    description.textContent = item.description || "Themed camp campaign poster.";
+
+    caption.appendChild(title);
+    caption.appendChild(description);
+    figure.appendChild(image);
+    figure.appendChild(caption);
+    container.appendChild(figure);
+  });
+}
+
+function renderContentManagerWorkSamples() {
+  const container = document.getElementById("content-manager-work-grid");
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  contentManagerWorkSampleItems.forEach((item) => {
+    const figure = document.createElement("figure");
+    figure.className = "content-manager-work-card";
+    figure.setAttribute("data-reveal", "");
+
+    const image = document.createElement("img");
+    image.src = toPublicUrl(item.file);
+    image.alt = item.title || "Content manager work sample";
+    image.loading = "lazy";
+
+    const caption = document.createElement("figcaption");
+    const title = document.createElement("h3");
+    title.textContent = item.title || "Work Sample";
+    const description = document.createElement("p");
+    description.textContent = item.description || "Selected content management work sample.";
+
+    caption.appendChild(title);
+    caption.appendChild(description);
+    figure.appendChild(image);
+    figure.appendChild(caption);
+    container.appendChild(figure);
+  });
+}
+
+function renderOperationsApplicationLogos() {
+  const container = document.getElementById("operations-logo-grid");
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  operationsApplicationLogoItems.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "operations-logo-card";
+    card.setAttribute("data-reveal", "");
+
+    const logoWrap = document.createElement("div");
+    logoWrap.className = "operations-logo-visual";
+
+    const image = document.createElement("img");
+    image.src = toPublicUrl(item.file);
+    image.alt = `${item.title || "Operations application"} logo`;
+    image.loading = "lazy";
+    logoWrap.appendChild(image);
+
+    const body = document.createElement("div");
+    body.className = "operations-logo-body";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title || "Operations Application";
+
+    const description = document.createElement("p");
+    description.textContent = item.description || "Application used for educational operations.";
+
+    body.appendChild(title);
+    body.appendChild(description);
+    card.appendChild(logoWrap);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+}
+
 function openDocumentPreview(item) {
   document.dispatchEvent(
     new CustomEvent("portfolio:open-document", {
@@ -616,7 +1083,40 @@ function initializeDocumentViewer() {
     title.textContent = item.title || "Document Preview";
     content.innerHTML = "";
 
-    if (isPdfFile(item.file)) {
+    const previewPath = item.viewerPreview || item.preview || defaultPdfPreview(item.file);
+    const hasPreviewPath = Boolean(previewPath);
+    const shouldUsePreview = item.previewOnly && hasPreviewPath;
+
+    if (shouldUsePreview) {
+      const previewPanel = document.createElement("div");
+      previewPanel.className = "doc-viewer-preview-panel";
+
+      const image = document.createElement("img");
+      image.className = "doc-viewer-image doc-viewer-preview-image";
+      image.src = toPublicUrl(previewPath);
+      image.alt = `${item.title || "Document"} preview`;
+      image.loading = "lazy";
+      image.draggable = false;
+      image.addEventListener("error", () => {
+        image.remove();
+        const placeholder = document.createElement("div");
+        placeholder.className = "certificate-placeholder";
+        placeholder.textContent = item.typeLabel || fileExtension(item.file);
+        previewPanel.prepend(placeholder);
+      });
+
+      previewPanel.appendChild(image);
+      if (!item.hideFullFile) {
+        const fallback = document.createElement("a");
+        fallback.className = "doc-viewer-fallback-link";
+        fallback.href = fileUrl;
+        fallback.target = "_blank";
+        fallback.rel = "noopener";
+        fallback.textContent = "Open full file in new tab";
+        previewPanel.appendChild(fallback);
+      }
+      content.appendChild(previewPanel);
+    } else if (isPdfFile(item.file)) {
       const frame = document.createElement("iframe");
       frame.className = "doc-viewer-frame";
       frame.src = toPdfViewerUrl(item.file);
@@ -1050,108 +1550,17 @@ function initializeSectionNav() {
   });
 }
 
-function initializeHeroMediaIntro() {
-  const wrapper = document.getElementById("hero-media-visual");
-  const introVideo = document.getElementById("hero-intro-video");
-  const soundButton = document.getElementById("hero-video-sound-button");
-  if (!wrapper || !introVideo || !soundButton) {
-    return;
-  }
-
-  const prefersReducedMotion =
-    typeof window.matchMedia === "function" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const showProfileImage = () => {
-    wrapper.classList.add("is-finished");
-  };
-
-  if (prefersReducedMotion) {
-    showProfileImage();
-    return;
-  }
-
-  introVideo.addEventListener("ended", showProfileImage, { once: true });
-  introVideo.addEventListener("error", showProfileImage, { once: true });
-  introVideo.addEventListener("abort", showProfileImage, { once: true });
-
-  const showButton = () => {
-    soundButton.classList.remove("is-hidden");
-  };
-
-  const hideButton = () => {
-    soundButton.classList.add("is-hidden");
-  };
-
-  const playWithSound = () => {
-    introVideo.muted = false;
-    introVideo.defaultMuted = false;
-    introVideo.volume = 1;
-    return introVideo.play();
-  };
-
-  const playMuted = () => {
-    introVideo.muted = true;
-    introVideo.defaultMuted = true;
-    introVideo.volume = 0;
-    return introVideo.play();
-  };
-
-  const startVideo = () => {
-    const withSoundAttempt = playWithSound();
-    if (!withSoundAttempt || typeof withSoundAttempt.catch !== "function") {
-      hideButton();
-      return;
-    }
-
-    withSoundAttempt
-      .then(() => {
-        hideButton();
-      })
-      .catch(() => {
-        const mutedAttempt = playMuted();
-        if (!mutedAttempt || typeof mutedAttempt.catch !== "function") {
-          soundButton.textContent = "Play Intro";
-          showButton();
-          return;
-        }
-
-        mutedAttempt
-          .then(() => {
-            soundButton.textContent = "Enable Sound";
-            showButton();
-          })
-          .catch(() => {
-            showProfileImage();
-          });
-      });
-  };
-
-  soundButton.addEventListener("click", () => {
-    startVideo();
-  });
-
-  introVideo.addEventListener("volumechange", () => {
-    if (introVideo.muted || introVideo.volume === 0) {
-      if (!introVideo.paused) {
-        soundButton.textContent = "Enable Sound";
-      }
-      showButton();
-    } else {
-      hideButton();
-    }
-  });
-
-  showButton();
-}
-
 renderLogos();
 renderTeachingPhotos();
 initializeDocumentViewer();
 initializeOwnerLoginPopup();
 renderDocumentCards("certificate-grid", certificateItems, "certificates");
 renderDocumentCards("transcript-grid", transcriptItems, "transcripts");
-initializeHeroMediaIntro();
+renderContentManagerEvidence();
+renderContentManagerVideos();
+renderContentManagerPosters();
+renderContentManagerWorkSamples();
+renderOperationsApplicationLogos();
 initializePhilosophyPresentation();
 initializeReveal();
 initializeSectionNav();
