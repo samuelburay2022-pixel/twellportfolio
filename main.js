@@ -163,6 +163,11 @@ const certificateItems = [
     description: "Official PDF credential for Google for Education Level 2.",
   },
   {
+    file: "Certificates_Files/Buray, Samuel Jr., P..pdf",
+    title: "APCoRE Membership Certificate 2026",
+    description: "Professional membership certificate with the Asia-Pacific Consortium of Researchers and Educators, valid 2026-2029.",
+  },
+  {
     file: "Certificates_Files/Gemini_Certified_Educator.pdf",
     title: "Gemini Certified Educator",
     description: "Professional certification for classroom use of Google Gemini tools.",
@@ -322,6 +327,18 @@ const contentManagerEvidenceItems = [
 ];
 
 const contentManagerVideoItems = [
+  {
+    file: "Content Manager Portfolio/Spring_Spectacular_Camp.mp4",
+    title: "Spring Spectacular Camp",
+    description: "Full campaign video for Spring Spectacular Camp program promotion.",
+    layout: "standard",
+  },
+  {
+    file: "Content Manager Portfolio/VKC_SpringSpectacularCamp_Instagram.mp4",
+    title: "Spring Spectacular Camp Instagram",
+    description: "Portrait-format Instagram campaign version for Spring Spectacular Camp.",
+    layout: "portrait",
+  },
   {
     file: "Content Manager Portfolio/Alameda Video Teaser.mp4",
     title: "Alameda Video Teaser",
@@ -587,6 +604,17 @@ function fileExtension(path) {
     return "FILE";
   }
   return cleanPath.slice(lastDot + 1).toUpperCase();
+}
+
+function videoMimeType(path) {
+  const extension = fileExtension(path).toLowerCase();
+  if (extension === "mov") {
+    return "video/quicktime";
+  }
+  if (extension === "webm") {
+    return "video/webm";
+  }
+  return "video/mp4";
 }
 
 function fileName(path) {
@@ -906,10 +934,13 @@ function renderContentManagerVideos() {
     if (item.layout === "wide") {
       card.classList.add("is-wide");
     }
+    if (item.layout === "standard") {
+      card.classList.add("is-standard");
+    }
 
     const video = document.createElement("video");
     video.controls = true;
-    video.preload = "metadata";
+    video.preload = "none";
     video.playsInline = true;
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "true");
@@ -917,7 +948,7 @@ function renderContentManagerVideos() {
 
     const source = document.createElement("source");
     source.src = toPublicUrl(item.file);
-    source.type = "video/mp4";
+    source.type = videoMimeType(item.file);
     video.appendChild(source);
 
     const body = document.createElement("div");
@@ -1000,6 +1031,81 @@ function renderContentManagerWorkSamples() {
     figure.appendChild(caption);
     container.appendChild(figure);
   });
+}
+
+function initializeContentManagerToggles() {
+  const toggleButtons = Array.from(document.querySelectorAll("[data-content-manager-toggle]"));
+  if (!toggleButtons.length) {
+    return;
+  }
+
+  const setPanelState = (button, shouldOpen, shouldScroll = false) => {
+    const panelId = button.getAttribute("aria-controls");
+    const panel = panelId ? document.getElementById(panelId) : null;
+    if (!panel) {
+      return;
+    }
+
+    if (shouldOpen) {
+      toggleButtons.forEach((otherButton) => {
+        if (otherButton !== button) {
+          setPanelState(otherButton, false);
+        }
+      });
+    }
+
+    const block = button.closest(".content-manager-block");
+    panel.hidden = !shouldOpen;
+    button.setAttribute("aria-expanded", String(shouldOpen));
+    button.textContent = shouldOpen
+      ? button.dataset.closeLabel || "Hide"
+      : button.dataset.openLabel || "Open";
+
+    if (block) {
+      block.classList.toggle("is-open", shouldOpen);
+    }
+
+    if (!shouldOpen) {
+      panel.querySelectorAll("video").forEach((video) => {
+        video.pause();
+      });
+      return;
+    }
+
+    panel.querySelectorAll("[data-reveal]").forEach((element) => {
+      element.classList.add("is-visible");
+    });
+
+    if (shouldScroll && block) {
+      block.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  toggleButtons.forEach((button) => {
+    setPanelState(button, button.getAttribute("aria-expanded") === "true");
+    button.addEventListener("click", () => {
+      setPanelState(button, button.getAttribute("aria-expanded") !== "true");
+    });
+  });
+
+  document.querySelectorAll("[data-content-manager-open]").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const panelId = trigger.dataset.contentManagerOpen;
+      const button = toggleButtons.find((item) => item.getAttribute("aria-controls") === panelId);
+      if (button) {
+        setPanelState(button, true, true);
+      }
+    });
+  });
+
+  const initialPanelId = window.location.hash ? window.location.hash.slice(1) : "";
+  if (initialPanelId) {
+    const button = toggleButtons.find((item) => item.getAttribute("aria-controls") === initialPanelId);
+    if (button) {
+      setPanelState(button, true);
+    }
+  }
 }
 
 function renderOperationsApplicationLogos() {
@@ -1560,6 +1666,7 @@ renderContentManagerEvidence();
 renderContentManagerVideos();
 renderContentManagerPosters();
 renderContentManagerWorkSamples();
+initializeContentManagerToggles();
 renderOperationsApplicationLogos();
 initializePhilosophyPresentation();
 initializeReveal();

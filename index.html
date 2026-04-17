@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260411c05" />
+    <link rel="stylesheet" href="styles.css?v=20260417c02" />
   </head>
   <body>
     <header class="topbar">
@@ -132,9 +132,23 @@
             <p class="highlight-logo-title">Featured Credentials (Hover to Zoom)</p>
             <div class="highlight-logo-grid" id="highlight-logo-grid"></div>
           </div>
-          <p class="media-note">
-            Licensed Professional Teacher and Digital Literacy &amp; Computing Teacher
-          </p>
+          <div class="ongoing-training-strip">
+            <p class="ongoing-training-title">Ongoing Training</p>
+            <ul class="ongoing-training-list">
+              <li>
+                <span>Cambridge</span>
+                <strong>Preparing to Teach Lower Secondary Computing</strong>
+              </li>
+              <li>
+                <span>In Process</span>
+                <strong>Google Certified Trainer</strong>
+              </li>
+              <li>
+                <span>In Process</span>
+                <strong>Google Certified Innovator</strong>
+              </li>
+            </ul>
+          </div>
         </aside>
       </section>
 
@@ -524,7 +538,11 @@
               <span>Data Reporting</span>
             </div>
             <div class="project-card-actions">
-              <a class="button button-secondary" href="#content-manager-evidence-grid">
+              <a
+                class="button button-secondary"
+                href="#content-manager-evidence-grid"
+                data-content-manager-open="content-manager-evidence-grid"
+              >
                 View Project Evidence
               </a>
             </div>
@@ -564,34 +582,86 @@
 
         <div class="content-manager-block" data-reveal>
           <div class="content-manager-block-heading">
-            <h3>Project Evidence</h3>
-            <p>Selected work samples grouped by content purpose.</p>
+            <div>
+              <h3>Project Evidence</h3>
+              <p>Selected work samples grouped by content purpose.</p>
+            </div>
+            <button
+              class="content-manager-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="content-manager-evidence-grid"
+              data-content-manager-toggle
+              data-open-label="Open Project Evidence"
+              data-close-label="Hide Project Evidence"
+            >
+              Open Project Evidence
+            </button>
           </div>
-          <div class="content-manager-evidence-grid" id="content-manager-evidence-grid"></div>
+          <div class="content-manager-evidence-grid" id="content-manager-evidence-grid" hidden></div>
         </div>
 
         <div class="content-manager-block" data-reveal>
           <div class="content-manager-block-heading">
-            <h3>Video Campaigns</h3>
-            <p>Short-form and program videos for camps, services, afterschool, and events.</p>
+            <div>
+              <h3>Video Campaigns</h3>
+              <p>Short-form and program videos for camps, services, afterschool, and events.</p>
+            </div>
+            <button
+              class="content-manager-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="content-manager-video-grid"
+              data-content-manager-toggle
+              data-open-label="Open Video Campaigns"
+              data-close-label="Hide Video Campaigns"
+            >
+              Open Video Campaigns
+            </button>
           </div>
-          <div class="content-manager-video-grid" id="content-manager-video-grid"></div>
+          <div class="content-manager-video-grid" id="content-manager-video-grid" hidden></div>
         </div>
 
         <div class="content-manager-block" data-reveal>
           <div class="content-manager-block-heading">
-            <h3>Camp Poster Library</h3>
-            <p>Social-ready square posters designed for themed learning camps.</p>
+            <div>
+              <h3>Camp Poster Library</h3>
+              <p>Social-ready square posters designed for themed learning camps.</p>
+            </div>
+            <button
+              class="content-manager-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="content-manager-poster-grid"
+              data-content-manager-toggle
+              data-open-label="Open Poster Library"
+              data-close-label="Hide Poster Library"
+            >
+              Open Poster Library
+            </button>
           </div>
-          <div class="content-manager-poster-grid" id="content-manager-poster-grid"></div>
+          <div class="content-manager-poster-grid" id="content-manager-poster-grid" hidden></div>
         </div>
 
         <div class="content-manager-block" data-reveal>
           <div class="content-manager-block-heading">
-            <h3>Profile Work Samples</h3>
-            <p>Learning-content, creative design, flip book, and data-reporting samples.</p>
+            <div>
+              <h3>Profile Work Samples</h3>
+              <p>Learning-content, creative design, flip book, and data-reporting samples.</p>
+            </div>
+            <button
+              class="content-manager-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="content-manager-work-grid"
+              data-content-manager-toggle
+              data-open-label="Open Work Samples"
+              data-close-label="Hide Work Samples"
+            >
+              Open Work Samples
+            </button>
           </div>
-          <div class="content-manager-work-grid" id="content-manager-work-grid"></div>
+          <div class="content-manager-work-grid" id="content-manager-work-grid" hidden></div>
         </div>
       </section>
 
@@ -706,6 +776,6 @@
       </div>
     </div>
 
-    <script src="main.js?v=20260411c05"></script>
+    <script src="main.js?v=20260417c02"></script>
   </body>
 </html>
