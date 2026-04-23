@@ -1,1674 +1,1047 @@
-/*
-  CONTENT EDITING GUIDE
-  1) Add / remove logos in `logoItems` and `extraLogoItems`.
-  2) Edit highlighted logos below profile photo in `highlightLogoItems`.
-  3) Add / edit / delete teaching photos in the `teachingPhotos` list.
-  4) Add / edit / delete certificates in the `certificateItems` list.
-  5) Add / edit / delete transcripts in the `transcriptItems` list.
-  6) Add / edit content manager work in the `contentManager...` lists.
-  7) Add / edit operations app logos in `operationsApplicationLogoItems`.
-  8) Configure owner analytics page settings in `visitorsAnalyticsConfig`.
-  9) Keep file paths relative to this project root.
-*/
+(function () {
+  const data = window.DIGITAL_EDU_PRO_DATA;
+  const byId = (id) => document.getElementById(id);
 
-const teachingPhotos = [
-  {
-    file: "Teaching_Photos/Positive_Environment.jpg",
-    title: "Positive Environment",
-    description: "Warm, student-friendly classroom atmosphere.",
-    alt: "Teacher with students in a positive classroom environment",
-  },
-  {
-    file: "Teaching_Photos/Computing Class.jpg",
-    title: "Computing Class",
-    description: "Students learning core computing skills.",
-    alt: "Students in a computing class session",
-  },
-  {
-    file: "Teaching_Photos/Coding Class.jpg",
-    title: "Coding Class",
-    description: "Coding activities with guided practice.",
-    alt: "Students in a coding class",
-  },
-  {
-    file: "Teaching_Photos/Coding_Sandpit.jpg",
-    title: "Coding Sandpit",
-    description: "Hands-on coding and problem-solving tasks.",
-    alt: "Students participating in coding sandpit activity",
-  },
-  {
-    file: "Teaching_Photos/Robotics_Test.jpg",
-    title: "Robotics Test",
-    description: "Robotics assessment and practical testing.",
-    alt: "Students in a robotics test activity",
-  },
-  {
-    file: "Teaching_Photos/VexIQ_Class.jpg",
-    title: "VEX IQ Class",
-    description: "Introductory VEX IQ robotics lesson.",
-    alt: "Students in a VEX IQ class",
-  },
-  {
-    file: "Teaching_Photos/ClubPresentation.jpg",
-    title: "Club Presentation",
-    description: "Student presentation during club session.",
-    alt: "Students presenting in a club activity",
-  },
-  {
-    file: "Teaching_Photos/HandOnLearning_1.jpg",
-    title: "Hands-on Learning 1",
-    description: "Students learning through direct practice.",
-    alt: "Hands-on learning activity one",
-  },
-  {
-    file: "Teaching_Photos/HandsOnLearning_2.jpg",
-    title: "Hands-on Learning 2",
-    description: "Collaborative practical classroom task.",
-    alt: "Hands-on learning activity two",
-  },
-  {
-    file: "Teaching_Photos/HandsOnLearning_Seminar.JPG",
-    title: "Hands-on Seminar",
-    description: "Seminar-based practical learning.",
-    alt: "Hands-on learning seminar session",
-  },
-  {
-    file: "Teaching_Photos/EnglishCamp.JPG",
-    title: "English Camp",
-    description: "Interactive language learning activities.",
-    alt: "Students during English camp activity",
-  },
-  {
-    file: "Teaching_Photos/MorningTalk.jpg",
-    title: "Morning Talk",
-    description: "Morning session with student engagement.",
-    alt: "Morning talk classroom session",
-  },
-  {
-    file: "Teaching_Photos/MorningTalk2.jpg",
-    title: "Morning Talk 2",
-    description: "Follow-up morning class activity.",
-    alt: "Second morning talk classroom session",
-  },
-  {
-    file: "Teaching_Photos/SchooFair.JPG",
-    title: "School Fair",
-    description: "Student participation in school fair.",
-    alt: "Students in school fair event",
-  },
-  {
-    file: "Teaching_Photos/Training.jpg",
-    title: "Teacher Training",
-    description: "Professional learning and training.",
-    alt: "Teacher in training session",
-  },
-  {
-    file: "Teaching_Photos/Training_2.jpg",
-    title: "Teacher Training 2",
-    description: "Advanced workshop and training activity.",
-    alt: "Teacher in second training session",
-  },
-];
-
-const logoItems = [
-  { file: "Logos/Arduino_Logo.svg.png", alt: "Arduino" },
-  { file: "Logos/LEGO_logo.svg.png", alt: "LEGO Education" },
-  { file: "Logos/Microsoft_logo_(2012).svg.png", alt: "Microsoft" },
-  { file: "Logos/Python-logo-notext.svg.png", alt: "Python" },
-  { file: "Logos/canva.webp", alt: "Canva" },
-  { file: "Logos/microbit-logo.png", alt: "Microbit" },
-  { file: "Logos/scratch-coding.jpg", alt: "Scratch" },
-  { file: "Logos/tinkercad.png", alt: "Tinkercad" },
-  { file: "Logos/New_Logo_of_FMSLogo.png", alt: "FMSLogo" },
-];
-
-const extraLogoItems = [
-  { file: "Logos/ai_logo.avif", alt: "AI Logo" },
-  { file: "Logos/code-int.jpg", alt: "CodeInt Logo" },
-  { file: "Logos/image.png", alt: "Image Logo" },
-  { file: "Logos/mac.png", alt: "Mac Logo" },
-  { file: "Logos/unnamed.jpg", alt: "Additional Logo" },
-];
-
-const highlightLogoItems = [
-  { file: "Logos/mce.png", alt: "Microsoft Certified Educator", label: "MCE" },
-  { file: "Logos/nbdb.jpg", alt: "National Book Development Board", label: "NBDB" },
-  { file: "Digital License.png", alt: "Professional Teacher Digital License", label: "Digital License" },
-];
-
-const certificateItems = [
-  {
-    file: "Certificates_Files/CertificateOfPassing_LPT.jpg",
-    title: "Licensed Professional Teacher",
-    description: "Official LPT certificate and passing record.",
-  },
-  {
-    file: "Certificates_Files/Cert97312228167_MCE.pdf",
-    title: "Microsoft Certified Educator",
-    description: "Core educator certification from Microsoft.",
-  },
-  {
-    file: "Certificates_Files/Google_Level2.jpg",
-    title: "Google Certified Educator Level 2",
-    description: "Official Google for Education Level 2 educator certification.",
-  },
-  {
-    file: "Certificates_Files/Google_Certified_Educator_Lvl1.pdf",
-    title: "Google Certified Educator Level 1",
-    description: "Official Google for Education Level 1 educator certification.",
-  },
-  {
-    file: "Certificates_Files/Google_Certified_Educator_Lvl2.pdf",
-    title: "Google Certified Educator Level 2 (PDF)",
-    description: "Official PDF credential for Google for Education Level 2.",
-  },
-  {
-    file: "Certificates_Files/Buray, Samuel Jr., P..pdf",
-    title: "APCoRE Membership Certificate 2026",
-    description: "Professional membership certificate with the Asia-Pacific Consortium of Researchers and Educators, valid 2026-2029.",
-  },
-  {
-    file: "Certificates_Files/Gemini_Certified_Educator.pdf",
-    title: "Gemini Certified Educator",
-    description: "Professional certification for classroom use of Google Gemini tools.",
-  },
-  {
-    file: "Certificates_Files/Certificate_for_Introduction_to_Technology_for_Teaching_and_Learning_(March_2026)-CA_154437.pdf",
-    title: "Introduction to Technology for Teaching and Learning",
-    description: "Professional learning certificate for technology-supported teaching and learning practice.",
-  },
-  {
-    file: "Certificates_Files/Certificate_for_Practical_Home_Behavior_Management_for_Children_with_Special_Needs_(February_2026)-CA_146624.pdf",
-    title: "Practical Home Behavior Management",
-    description: "Professional learning certificate for supporting children with special needs through practical behavior management strategies.",
-  },
-  {
-    file: "Certificates_Files/education-2030 UNESCO-06 Certificate _ UNESCO Open Learning.pdf",
-    title: "UNESCO Open Learning Certificate",
-    description: "Education 2030 professional learning certificate from UNESCO.",
-  },
-  {
-    file: "Certificates_Files/Unesco_2026.pdf",
-    title: "UNESCO Certificate 2026",
-    description: "UNESCO professional learning and training certificate (2026).",
-  },
-  {
-    file: "Certificates_Files/Robotics_VexIQ_Certificate.pdf",
-    title: "VEX IQ Robotics Certificate",
-    description: "Robotics training and classroom application certification.",
-  },
-  {
-    file: "Certificates_Files/Canva_Certificates.pdf",
-    title: "Canva Certificates",
-    description: "Design and classroom communication certificate set.",
-  },
-  {
-    file: "Certificates_Files/Certificate_of_Completion_DIGITAL_LITERACY 2.pdf",
-    title: "Digital Literacy Completion",
-    description: "Completed digital literacy professional course.",
-  },
-  {
-    file: "Certificates_Files/Digital Literacy Content.pdf",
-    title: "Digital Literacy Content",
-    description: "Learning content and evidence for digital literacy training.",
-  },
-  {
-    file: "Certificates_Files/ECE_CANADA_LEVEL 1_Certificate.pdf",
-    title: "ECE Canada Level 1",
-    description: "Early childhood education certification.",
-  },
-  {
-    file: "Certificates_Files/TEFL.pdf",
-    title: "TEFL Certificate",
-    description: "Teaching English as a Foreign Language credential.",
-  },
-  {
-    file: "Certificates_Files/TEYL.pdf",
-    title: "TEYL Certificate",
-    description: "Teaching English to Young Learners credential.",
-  },
-  {
-    file: "Certificates_Files/Empowering the New Generation of Teachers.jpg",
-    title: "Empowering the New Generation of Teachers",
-    description: "Professional development certificate for modern teaching practice.",
-  },
-  {
-    file: "Certificates_Files/Kasetsart_Training.jpg",
-    title: "Kasetsart Training",
-    description: "Training completion at Kasetsart University program.",
-  },
-  {
-    file: "Certificates_Files/MCE_Score.pdf",
-    title: "Microsoft Educator Score Report",
-    description: "Supporting score report for Microsoft educator certification.",
-  },
-  {
-    file: "Certificates_Files/NC2.jpg",
-    title: "NC2 Certificate",
-    description: "National Certificate credential record.",
-  },
-  {
-    file: "Certificates_Files/NDBD.JPEG",
-    title: "NDBD Recognition",
-    description: "National-level design and educational credential recognition.",
-  },
-];
-
-const transcriptItems = [
-  {
-    file: "https://learn.microsoft.com/en-us/users/samuelburay/transcript/d82x9a24nrgjr4k?tab=credentials-tab",
-    title: "Microsoft Learn Transcript",
-    description: "Official Microsoft Learn credentials and transcript profile.",
-  },
-  {
-    file: "Transcripts/BEED_Apostille.pdf",
-    title: "BEED Apostille",
-    description: "Bachelor of Elementary Education credential document.",
-  },
-  {
-    file: "Transcripts/BSIT_Apostille.pdf",
-    title: "BSIT Apostille",
-    description: "Bachelor of Science in Information Technology credential document.",
-  },
-  {
-    file: "Transcripts/MEM_Credentials.pdf",
-    title: "MEM Credentials",
-    description: "Master of Education in Educational Management credentials.",
-  },
-];
-
-const contentManagerEvidenceItems = [
-  {
-    file: "Content Manager Portfolio/Camp Posters/1.png",
-    preview: "Content Manager Portfolio/Camp Posters/1.png",
-    typeLabel: "WEB",
-    title: "Classes and Camps Website Content",
-    description: "Saved booking-page evidence for organizing classes, camps, parties, services, and parent-facing program information.",
-    buttonLabel: "Preview Page",
-    previewOnly: true,
-    hideFullFile: true,
-  },
-  {
-    file: "Content Manager Portfolio/Birthday_Planner_guide.png",
-    title: "Birthday Planning Guide",
-    description: "A parent-friendly guide that explains timing, support, house rules, food setup, and contact steps.",
-    isTall: true,
-  },
-  {
-    file: "Content Manager Portfolio/Automation_Release_of_Liability_and_Indemnity Agreement.png",
-    title: "Enrollment Automation Workflow",
-    description: "A visual explanation of registration, email delivery, form completion, record keeping, and parent follow-up.",
-    isTall: true,
-  },
-  {
-    file: "Content Manager Portfolio/GoogleWorspaceTraining_ScreenShot.jpeg",
-    title: "Google Workspace Training",
-    description: "Team training evidence for improving shared documents, communication routines, and digital collaboration.",
-  },
-  {
-    file: "Content Manager Portfolio/10.jpg",
-    preview: "Content Manager Portfolio/10.jpg",
-    typeLabel: "PDF",
-    title: "Student Progress Reporting System",
-    description: "A system-components PDF for explaining school reporting structure, performance data, and workflow planning.",
-    previewOnly: true,
-    hideFullFile: true,
-  },
-  {
-    file: "assets/pdf-previews/The Village Alliance Mail - \u{1F389} Your Tuesday Yoga at VKC is Coming Up!.pdf.png",
-    preview: "assets/pdf-previews/The Village Alliance Mail - \u{1F389} Your Tuesday Yoga at VKC is Coming Up!.pdf.png",
-    typeLabel: "PDF",
-    title: "Email Campaign Example",
-    description: "A campaign email PDF showing audience communication, reminder structure, and brand-consistent parent messaging.",
-    previewOnly: true,
-    hideFullFile: true,
-    isTall: true,
-  },
-];
-
-const contentManagerVideoItems = [
-  {
-    file: "Content Manager Portfolio/Spring_Spectacular_Camp.mp4",
-    title: "Spring Spectacular Camp",
-    description: "Full campaign video for Spring Spectacular Camp program promotion.",
-    layout: "standard",
-  },
-  {
-    file: "Content Manager Portfolio/VKC_SpringSpectacularCamp_Instagram.mp4",
-    title: "Spring Spectacular Camp Instagram",
-    description: "Portrait-format Instagram campaign version for Spring Spectacular Camp.",
-    layout: "portrait",
-  },
-  {
-    file: "Content Manager Portfolio/Alameda Video Teaser.mp4",
-    title: "Alameda Video Teaser",
-    description: "Community-facing teaser video for local family awareness.",
-  },
-  {
-    file: "Content Manager Portfolio/Afterschool_Teaser.mp4",
-    title: "Afterschool Teaser",
-    description: "Portrait-format promotional video for afterschool program discovery.",
-    layout: "portrait",
-  },
-  {
-    file: "Content Manager Portfolio/services_video.mp4",
-    title: "Services Video",
-    description: "Overview video presenting available services in a clear promotional flow.",
-  },
-  {
-    file: "Content Manager Portfolio/Junior Chef Academy .mp4",
-    title: "Junior Chef Academy",
-    description: "Program video for a hands-on cooking and creative learning experience.",
-  },
-  {
-    file: "Content Manager Portfolio/Space_Robots_Laser_Camp.mp4",
-    title: "Space Robots Laser Camp",
-    description: "Camp campaign video for robotics, space, and maker-learning themes.",
-  },
-  {
-    file: "Content Manager Portfolio/Thrill Builders Camp.mp4",
-    title: "Thrill Builders Camp",
-    description: "Camp video for roller coaster engineering and build-based learning.",
-  },
-  {
-    file: "Content Manager Portfolio/TheArcOfLearning.mp4",
-    title: "The Arc of Learning",
-    description: "Portrait-format learning story video for social media promotion.",
-    layout: "portrait",
-  },
-  {
-    file: "Content Manager Portfolio/Instgram_Post.mp4",
-    title: "Instagram Post",
-    description: "Short social post formatted for feed-first campaign use.",
-    layout: "portrait",
-  },
-  {
-    file: "Content Manager Portfolio/Summer Lunch Party.mp4",
-    title: "Summer Lunch Party",
-    description: "Event clip for lightweight social engagement and parent updates.",
-  },
-  {
-    file: "Content Manager Portfolio/Best in Alameda!.mp4",
-    title: "Best in Alameda",
-    description: "Wide promotional banner video for quick community recognition.",
-    layout: "wide",
-  },
-];
-
-const contentManagerPosterItems = Array.from({ length: 16 }, (_, index) => ({
-  file: `Content Manager Portfolio/Camp Posters/${index + 1}.png`,
-  title: `Camp Poster ${String(index + 1).padStart(2, "0")}`,
-  description: "Square campaign poster for a themed learning camp.",
-}));
-
-const contentManagerWorkSampleItems = [
-  {
-    file: "Content Manager Portfolio/3.jpg",
-    title: "Camp-Based Learning Programs",
-    description: "Workbook and course creation for structured, age-appropriate camp learning.",
-  },
-  {
-    file: "Content Manager Portfolio/4.jpg",
-    title: "Workbook and Course Samples",
-    description: "A sample set of phonics, grammar, and completion-certificate materials.",
-  },
-  {
-    file: "Content Manager Portfolio/5.jpg",
-    title: "Creative Design Work",
-    description: "Covers, badges, activity pages, social graphics, and teaser presentations.",
-  },
-  {
-    file: "Content Manager Portfolio/6.jpg",
-    title: "Camp and Junior Chef Assets",
-    description: "Visual samples for camp themes, world exploration, and cooking programs.",
-  },
-  {
-    file: "Content Manager Portfolio/7.jpg",
-    title: "Reading Adventure Promo",
-    description: "Promotional visual for connecting reading content with local adventure themes.",
-  },
-  {
-    file: "Content Manager Portfolio/8.jpg",
-    title: "Reading Social Campaign",
-    description: "Mobile-first social examples for reading engagement and book promotion.",
-  },
-  {
-    file: "Content Manager Portfolio/9.jpg",
-    title: "Google Sheets and Data Work",
-    description: "Data-driven tools for tracking, dashboards, charts, and simple reporting.",
-  },
-  {
-    file: "Content Manager Portfolio/10.jpg",
-    title: "Progress Dashboard Samples",
-    description: "Graphical student progress and performance dashboard examples.",
-  },
-  {
-    file: "Content Manager Portfolio/11.jpg",
-    title: "Flip Books and E-Books",
-    description: "Interactive digital book concepts that guide families and learners.",
-  },
-  {
-    file: "Content Manager Portfolio/12.jpg",
-    title: "Book and Worksheet Projects",
-    description: "Book, nursery, computing, and writing-studio samples for learning products.",
-  },
-];
-
-const operationsApplicationLogoItems = [
-  {
-    file: "Operations Application Logo/Gemini.png",
-    title: "Gemini",
-    description: "AI-assisted planning, ideation, and content support.",
-  },
-  {
-    file: "Operations Application Logo/chatgpt.jpg",
-    title: "ChatGPT",
-    description: "Drafting, content refinement, workflow support, and lesson ideation.",
-  },
-  {
-    file: "Operations Application Logo/codex.png",
-    title: "Codex",
-    description: "Website updates, code organization, and technical implementation support.",
-  },
-  {
-    file: "Operations Application Logo/google workspace.jpg",
-    title: "Google Workspace",
-    description: "Team documents, spreadsheets, shared files, and collaborative operations.",
-  },
-  {
-    file: "Operations Application Logo/adobe-express-logo-app-icon-editable-transparent-background-social-media-design-for-digital-download-free-png.webp",
-    title: "Adobe Express",
-    description: "Fast visual design for posters, guides, and campaign assets.",
-  },
-  {
-    file: "Operations Application Logo/wix.png",
-    title: "Wix",
-    description: "Website pages, service listings, forms, and booking content updates.",
-  },
-  {
-    file: "Operations Application Logo/meta.png",
-    title: "Meta",
-    description: "Social media presence, community updates, and campaign distribution.",
-  },
-  {
-    file: "Operations Application Logo/omnisend.webp",
-    title: "Omnisend",
-    description: "Email campaign delivery, reminders, and parent communication flows.",
-  },
-  {
-    file: "Operations Application Logo/hubspot8920.jpg",
-    title: "HubSpot",
-    description: "Contact organization, CRM routines, and communication tracking.",
-  },
-  {
-    file: "Operations Application Logo/sling.png",
-    title: "Sling",
-    description: "Scheduling and team operations support.",
-  },
-  {
-    file: "Operations Application Logo/wave.png",
-    title: "Wave",
-    description: "Invoices, payments, and basic accounting support.",
-  },
-];
-
-const visitorsAnalyticsConfig = {
-  // 1) Create GA4 property and copy Measurement ID (format: G-XXXXXXXXXX).
-  gaMeasurementId: "G-QRQJVRGK5M",
-  // 2) Add your GA report/share URL here. This URL requires your Google login.
-  gaDashboardUrl: "https://analytics.google.com/analytics/web/",
-  // 3) Set your deployed portfolio URL (optional). If empty, current site URL is used.
-  liveSiteUrl: "https://samuelburay2022-pixel.github.io/TwellPortfolio/",
-  // 4) Set GA4 Property ID (numeric, e.g., 123456789) for analytics-summary.html API queries.
-  gaPropertyId: "527769702",
-  // 5) Set Google OAuth Web Client ID for Analytics Data API read access.
-  gaOAuthClientId: "182752428348-4kqf7ejk69tlq89ciq5t5eot6agfsnpv.apps.googleusercontent.com",
-  // 6) Summary page opened after owner login.
-  analyticsSummaryPage: "analytics-summary.html",
-  // 7) Simple owner access gate for this page section.
-  ownerUsername: "twellth91",
-  ownerPassword: "twellth91*",
-};
-
-const philosophySlides = [
-  {
-    step: "Core Belief",
-    title: "Student-Centered Learning",
-    text: "Every learner can grow with guidance, voice, and meaningful learning experiences in a safe and inclusive classroom.",
-  },
-  {
-    step: "Pillar 1",
-    title: "Meaningful Learning",
-    text: "Learning is purposeful, engaging, and aligned with student needs, strengths, and real classroom contexts.",
-  },
-  {
-    step: "Pillar 2",
-    title: "Inquiry and Project-Based Learning",
-    text: "Students explore questions, solve real-world problems, and develop independence through active participation.",
-  },
-  {
-    step: "Pillar 3",
-    title: "Purposeful Technology",
-    text: "Technology is used for creation, collaboration, and innovation with responsible digital citizenship practice.",
-  },
-  {
-    step: "Pillar 4",
-    title: "Inclusive and Supportive Classrooms",
-    text: "Diverse learning needs, cultures, and perspectives are respected in a safe and positive environment.",
-  },
-  {
-    step: "Pillar 5",
-    title: "Reflective Teaching Practice",
-    text: "Continuous reflection, learning, and adaptation keep teaching relevant, engaging, and impactful.",
-  },
-  {
-    step: "Outcome",
-    title: "Future-Ready Learners",
-    text: "The goal is to nurture curious, collaborative, and confident learners ready to shape their own futures.",
-  },
-];
-
-const imageExtensions = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".heic", ".avif"];
-
-function isExternalUrl(path) {
-  return /^https?:\/\//i.test(path);
-}
-
-function toPublicUrl(path) {
-  if (isExternalUrl(path)) {
-    return path;
-  }
-  return encodeURI(path);
-}
-
-function isImageFile(path) {
-  if (isExternalUrl(path)) {
-    return false;
-  }
-  const normalized = path.toLowerCase().split("?")[0];
-  return imageExtensions.some((extension) => normalized.endsWith(extension));
-}
-
-function isPdfFile(path) {
-  const normalized = path.toLowerCase().split("?")[0];
-  return normalized.endsWith(".pdf");
-}
-
-function fileExtension(path) {
-  if (isExternalUrl(path)) {
-    return "WEB";
-  }
-  const cleanPath = path.split("?")[0];
-  const lastDot = cleanPath.lastIndexOf(".");
-  if (lastDot === -1) {
-    return "FILE";
-  }
-  return cleanPath.slice(lastDot + 1).toUpperCase();
-}
-
-function videoMimeType(path) {
-  const extension = fileExtension(path).toLowerCase();
-  if (extension === "mov") {
-    return "video/quicktime";
-  }
-  if (extension === "webm") {
-    return "video/webm";
-  }
-  return "video/mp4";
-}
-
-function fileName(path) {
-  const cleanPath = path.split("?")[0];
-  const parts = cleanPath.split("/");
-  return parts[parts.length - 1] || "";
-}
-
-function defaultPdfPreview(path) {
-  if (isExternalUrl(path)) {
-    return "";
-  }
-  const cleanPath = path.split("?")[0];
-  if (!isPdfFile(cleanPath)) {
-    return "";
-  }
-  return `assets/pdf-previews/${fileName(cleanPath)}.png`;
-}
-
-function toPdfViewerUrl(path) {
-  const baseUrl = toPublicUrl(path);
-  const hashJoiner = baseUrl.includes("#") ? "&" : "#";
-  return `${baseUrl}${hashJoiner}toolbar=0&navpanes=0&scrollbar=1&view=FitH`;
-}
-
-function renderTeachingPhotos() {
-  const container = document.getElementById("teaching-photo-grid");
-  if (!container) {
-    return;
+  function createElement(tag, className, text) {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    if (text !== undefined && text !== null) element.textContent = text;
+    return element;
   }
 
-  container.innerHTML = "";
+  const serviceIcons = {
+    data:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><path d='M6 25h20'/><path d='M9 22V12'/><path d='M16 22V7'/><path d='M23 22v-6'/><path d='M7 10l6 4 5-7 7 5'/></svg>",
+    social:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><circle cx='10' cy='12' r='4'/><circle cx='22' cy='9' r='3'/><circle cx='22' cy='22' r='4'/><path d='m13.5 10.8 5.7-1.2'/><path d='m13.2 14.2 5.7 5.2'/></svg>",
+    marketing:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><path d='M6 18h5l11 5V9L11 14H6z'/><path d='M11 18v7'/><path d='M24.5 13.5 28 11'/><path d='M25 18h4'/></svg>",
+    funnel:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><path d='M5 7h22l-9 10v7l-4 2v-9z'/><path d='M9 7c1.8 3.2 4.2 5.2 7 6'/></svg>",
+    support:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><path d='M8 17a8 8 0 0 1 16 0'/><path d='M8 17v5h4v-6H8z'/><path d='M24 17v5h-4v-6h4z'/><path d='M20 25h-4'/></svg>",
+    media:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><rect x='6' y='8' width='20' height='16' rx='2'/><path d='m14 13 7 3-7 3z'/><path d='M9 27h14'/></svg>",
+    ai:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><rect x='9' y='9' width='14' height='14' rx='3'/><path d='M12 5v4'/><path d='M20 5v4'/><path d='M12 23v4'/><path d='M20 23v4'/><path d='M5 12h4'/><path d='M23 12h4'/><path d='M5 20h4'/><path d='M23 20h4'/><path d='M13 18l2-4 2 4'/><path d='M18.5 14v4'/></svg>",
+    automation:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><path d='M8 16a8 8 0 0 1 13.7-5.7'/><path d='M22 6v5h-5'/><path d='M24 16a8 8 0 0 1-13.7 5.7'/><path d='M10 26v-5h5'/><path d='M16 12v4l3 2'/></svg>",
+    admin:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><path d='M10 5h12l3 4v18H7V5z'/><path d='M21 5v5h4'/><path d='M11 15h10'/><path d='M11 20h10'/></svg>",
+    hr:
+      "<svg viewBox='0 0 32 32' aria-hidden='true'><circle cx='16' cy='10' r='4'/><path d='M8 26a8 8 0 0 1 16 0'/><path d='M24 12a3 3 0 0 1 3 3'/><path d='M8 12a3 3 0 0 0-3 3'/></svg>",
+  };
 
-  if (!teachingPhotos.length) {
-    const emptyCard = document.createElement("article");
-    emptyCard.className = "photo-card";
-    emptyCard.setAttribute("data-reveal", "");
-    emptyCard.innerHTML =
-      '<div class="photo-meta"><h3>No photos yet</h3><p>Add entries in <code>teachingPhotos</code> inside <code>main.js</code>.</p></div>';
-    container.appendChild(emptyCard);
-    return;
+  function createServiceIcon(name) {
+    const icon = createElement("span", "service-icon");
+    icon.innerHTML = serviceIcons[name] || serviceIcons.support;
+    return icon;
   }
 
-  teachingPhotos.forEach((item) => {
-    const figure = document.createElement("figure");
-    figure.className = "photo-card";
-    figure.setAttribute("data-reveal", "");
+  function slugify(text) {
+    return text
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  function createFileLink(file) {
+    const link = createElement("a", "file-link");
+    link.href = file.path;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.append(createElement("span", "file-link-title", file.title));
+    link.append(createElement("span", "file-link-type", file.type));
+    return link;
+  }
+
+  function createPortfolioDocumentCard(file, actionLabel = "Open sample") {
+    const documentCard = createElement("a", "portfolio-document-card");
+    documentCard.href = file.path;
+    documentCard.target = "_blank";
+    documentCard.rel = "noreferrer";
+    documentCard.append(createElement("span", "", file.type));
+    documentCard.append(createElement("strong", "", file.title));
+    documentCard.append(createElement("em", "", actionLabel));
+    return documentCard;
+  }
+
+  function createThumbFallback(file) {
+    return createElement(
+      "span",
+      "document-thumb media-thumb-fallback",
+      file.type === "Video" ? "Video sample" : file.type
+    );
+  }
+
+  function createThumbnailVisual(file) {
+    if (!file.isImage && file.type !== "Video") {
+      return createThumbFallback(file);
+    }
 
     const image = document.createElement("img");
-    image.src = toPublicUrl(item.file);
-    image.alt = item.alt || item.title || "Teaching photo";
+    image.src = file.isImage ? file.path : file.poster || file.path;
+    image.alt = "";
     image.loading = "lazy";
-
-    const caption = document.createElement("figcaption");
-    caption.className = "photo-meta";
-
-    const title = document.createElement("h3");
-    title.textContent = item.title || "Untitled Photo";
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "Add a short description in main.js.";
-
-    caption.appendChild(title);
-    caption.appendChild(description);
-
-    figure.appendChild(image);
-    figure.appendChild(caption);
-    container.appendChild(figure);
-  });
-}
-
-function renderLogos() {
-  const featuredContainer = document.getElementById("logo-grid");
-  const extraContainer = document.getElementById("logo-extra-row");
-  const highlightContainer = document.getElementById("highlight-logo-grid");
-
-  if (!featuredContainer) {
-    return;
+    image.decoding = "async";
+    image.addEventListener(
+      "error",
+      () => {
+        image.replaceWith(createThumbFallback(file));
+      },
+      { once: true }
+    );
+    return image;
   }
 
-  featuredContainer.innerHTML = "";
-  if (extraContainer) {
-    extraContainer.innerHTML = "";
-  }
-  if (highlightContainer) {
-    highlightContainer.innerHTML = "";
-  }
-
-  if (extraContainer) {
-    extraLogoItems.forEach((item) => {
-      const tile = document.createElement("div");
-      tile.className = "logo-tile";
-
-      const image = document.createElement("img");
-      image.src = toPublicUrl(item.file);
-      image.alt = item.alt || "Logo";
-      image.loading = "lazy";
-
-      tile.appendChild(image);
-      extraContainer.appendChild(tile);
-    });
-  }
-
-  logoItems.forEach((item) => {
-    const tile = document.createElement("div");
-    tile.className = "logo-tile";
-
+  function createCarouselImage(file, direction) {
     const image = document.createElement("img");
-    image.src = toPublicUrl(item.file);
-    image.alt = item.alt || "Logo";
-    image.loading = "lazy";
+    image.src = file.path;
+    image.alt = file.title;
+    image.loading = "eager";
+    image.decoding = "async";
+    image.addEventListener(
+      "error",
+      () => {
+        image.replaceWith(createPortfolioDocumentCard(file, "Open image"));
+      },
+      { once: true }
+    );
 
-    tile.appendChild(image);
-    featuredContainer.appendChild(tile);
-  });
-
-  if (highlightContainer) {
-    highlightLogoItems.forEach((item) => {
-      const card = document.createElement("div");
-      card.className = "highlight-logo-card";
-
-      const image = document.createElement("img");
-      image.src = toPublicUrl(item.file);
-      image.alt = item.alt || item.label || "Highlighted logo";
-      image.loading = "lazy";
-
-      const label = document.createElement("span");
-      label.textContent = item.label || "Credential";
-
-      card.appendChild(image);
-      card.appendChild(label);
-      highlightContainer.appendChild(card);
-    });
-  }
-}
-
-function renderDocumentCards(containerId, items, emptyLabel) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  if (!items.length) {
-    const emptyCard = document.createElement("article");
-    emptyCard.className = "certificate-card";
-    emptyCard.setAttribute("data-reveal", "");
-    emptyCard.innerHTML =
-      `<div class="certificate-body"><h3>No ${emptyLabel} yet</h3><p>Add entries in <code>main.js</code>.</p></div>`;
-    container.appendChild(emptyCard);
-    return;
-  }
-
-  items.forEach((item) => {
-    const card = document.createElement("article");
-    card.className = "certificate-card";
-    card.setAttribute("data-reveal", "");
-
-    const preview = document.createElement("div");
-    preview.className = "certificate-preview";
-
-    const typeBadge = document.createElement("span");
-    typeBadge.className = "certificate-file-type";
-    typeBadge.textContent = fileExtension(item.file);
-    preview.appendChild(typeBadge);
-
-    const previewPath = item.preview || defaultPdfPreview(item.file);
-
-    if (isImageFile(item.file)) {
-      const image = document.createElement("img");
-      image.src = toPublicUrl(item.file);
-      image.alt = item.title || "Certificate preview";
-      image.loading = "lazy";
-      preview.appendChild(image);
-    } else if (previewPath) {
-      const image = document.createElement("img");
-      image.src = toPublicUrl(previewPath);
-      image.alt = `${item.title || "Document"} preview`;
-      image.loading = "lazy";
-      image.addEventListener("error", () => {
-        image.remove();
-        const placeholder = document.createElement("div");
-        placeholder.className = "certificate-placeholder";
-        placeholder.textContent = fileExtension(item.file);
-        preview.appendChild(placeholder);
-      });
-      preview.appendChild(image);
-    } else {
-      const placeholder = document.createElement("div");
-      placeholder.className = "certificate-placeholder";
-      placeholder.textContent = fileExtension(item.file);
-      preview.appendChild(placeholder);
+    if (direction !== 0) {
+      image.classList.add(direction > 0 ? "enter-next" : "enter-previous");
     }
 
-    const body = document.createElement("div");
-    body.className = "certificate-body";
-
-    const title = document.createElement("h3");
-    title.textContent = item.title || "Untitled Certificate";
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "Add a short description in main.js.";
-
-    const link = document.createElement("button");
-    link.type = "button";
-    link.className = "certificate-link";
-    link.textContent = "View File";
-    link.addEventListener("click", () => {
-      openDocumentPreview(item);
-    });
-
-    body.appendChild(title);
-    body.appendChild(description);
-    body.appendChild(link);
-
-    card.appendChild(preview);
-    card.appendChild(body);
-    container.appendChild(card);
-  });
-}
-
-function createContentManagerPreview(item) {
-  const preview = document.createElement("div");
-  preview.className = "content-manager-evidence-preview";
-
-  const typeBadge = document.createElement("span");
-  typeBadge.className = "content-manager-file-type";
-  typeBadge.textContent = item.typeLabel || fileExtension(item.file);
-  preview.appendChild(typeBadge);
-
-  const previewPath = item.preview || (isImageFile(item.file) ? item.file : "");
-
-  if (previewPath) {
-    const image = document.createElement("img");
-    image.src = toPublicUrl(previewPath);
-    image.alt = `${item.title || "Content manager work"} preview`;
-    image.loading = "lazy";
-    if (item.isTall) {
-      image.className = "content-manager-preview-tall";
-    }
-    image.addEventListener("error", () => {
-      image.remove();
-      const placeholder = document.createElement("div");
-      placeholder.className = "content-manager-evidence-placeholder";
-      placeholder.textContent = item.typeLabel || fileExtension(item.file);
-      preview.appendChild(placeholder);
-    });
-    preview.appendChild(image);
-  } else {
-    const placeholder = document.createElement("div");
-    placeholder.className = "content-manager-evidence-placeholder";
-    placeholder.textContent = item.typeLabel || fileExtension(item.file);
-    preview.appendChild(placeholder);
+    return image;
   }
 
-  return preview;
-}
-
-function renderContentManagerEvidence() {
-  const container = document.getElementById("content-manager-evidence-grid");
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  contentManagerEvidenceItems.forEach((item) => {
-    const card = document.createElement("article");
-    card.className = "content-manager-evidence-card";
-    card.setAttribute("data-reveal", "");
-
-    const body = document.createElement("div");
-    body.className = "content-manager-evidence-body";
-
-    const title = document.createElement("h3");
-    title.textContent = item.title || "Content Manager Work";
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "Selected content management evidence.";
-
-    body.appendChild(title);
-    body.appendChild(description);
-
-    if (item.file) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "content-manager-evidence-link";
-      button.textContent = item.buttonLabel || "Preview Work";
-      button.addEventListener("click", () => {
-        openDocumentPreview(item);
-      });
-      body.appendChild(button);
-    }
-
-    card.appendChild(createContentManagerPreview(item));
-    card.appendChild(body);
-    container.appendChild(card);
-  });
-}
-
-function renderContentManagerVideos() {
-  const container = document.getElementById("content-manager-video-grid");
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  contentManagerVideoItems.forEach((item) => {
-    const card = document.createElement("article");
-    card.className = "content-manager-video-card";
-    card.setAttribute("data-reveal", "");
-    if (item.layout === "portrait") {
-      card.classList.add("is-vertical");
-    }
-    if (item.layout === "wide") {
-      card.classList.add("is-wide");
-    }
-    if (item.layout === "standard") {
-      card.classList.add("is-standard");
-    }
-
+  function createCarouselVideo(file, direction) {
     const video = document.createElement("video");
+    video.src = file.path;
+    if (file.poster) video.poster = file.poster;
     video.controls = true;
-    video.preload = "none";
+    video.muted = false;
+    video.volume = 1;
     video.playsInline = true;
-    video.setAttribute("playsinline", "");
-    video.setAttribute("webkit-playsinline", "true");
-    video.setAttribute("aria-label", item.title || "Content manager video");
+    video.preload = "metadata";
+    video.addEventListener(
+      "error",
+      () => {
+        video.replaceWith(createPortfolioDocumentCard(file, "Open video"));
+      },
+      { once: true }
+    );
 
-    const source = document.createElement("source");
-    source.src = toPublicUrl(item.file);
-    source.type = videoMimeType(item.file);
-    video.appendChild(source);
-
-    const body = document.createElement("div");
-    body.className = "content-manager-video-meta";
-
-    const title = document.createElement("h3");
-    title.textContent = item.title || "Video Campaign";
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "Short-form content campaign video.";
-
-    body.appendChild(title);
-    body.appendChild(description);
-
-    card.appendChild(video);
-    card.appendChild(body);
-    container.appendChild(card);
-  });
-}
-
-function renderContentManagerPosters() {
-  const container = document.getElementById("content-manager-poster-grid");
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  contentManagerPosterItems.forEach((item) => {
-    const figure = document.createElement("figure");
-    figure.className = "content-manager-poster-card";
-    figure.setAttribute("data-reveal", "");
-
-    const image = document.createElement("img");
-    image.src = toPublicUrl(item.file);
-    image.alt = item.title || "Camp poster";
-    image.loading = "lazy";
-
-    const caption = document.createElement("figcaption");
-    const title = document.createElement("h3");
-    title.textContent = item.title || "Camp Poster";
-    const description = document.createElement("p");
-    description.textContent = item.description || "Themed camp campaign poster.";
-
-    caption.appendChild(title);
-    caption.appendChild(description);
-    figure.appendChild(image);
-    figure.appendChild(caption);
-    container.appendChild(figure);
-  });
-}
-
-function renderContentManagerWorkSamples() {
-  const container = document.getElementById("content-manager-work-grid");
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  contentManagerWorkSampleItems.forEach((item) => {
-    const figure = document.createElement("figure");
-    figure.className = "content-manager-work-card";
-    figure.setAttribute("data-reveal", "");
-
-    const image = document.createElement("img");
-    image.src = toPublicUrl(item.file);
-    image.alt = item.title || "Content manager work sample";
-    image.loading = "lazy";
-
-    const caption = document.createElement("figcaption");
-    const title = document.createElement("h3");
-    title.textContent = item.title || "Work Sample";
-    const description = document.createElement("p");
-    description.textContent = item.description || "Selected content management work sample.";
-
-    caption.appendChild(title);
-    caption.appendChild(description);
-    figure.appendChild(image);
-    figure.appendChild(caption);
-    container.appendChild(figure);
-  });
-}
-
-function initializeContentManagerToggles() {
-  const toggleButtons = Array.from(document.querySelectorAll("[data-content-manager-toggle]"));
-  if (!toggleButtons.length) {
-    return;
-  }
-
-  const setPanelState = (button, shouldOpen, shouldScroll = false) => {
-    const panelId = button.getAttribute("aria-controls");
-    const panel = panelId ? document.getElementById(panelId) : null;
-    if (!panel) {
-      return;
+    if (direction !== 0) {
+      video.classList.add(direction > 0 ? "enter-next" : "enter-previous");
     }
 
-    if (shouldOpen) {
-      toggleButtons.forEach((otherButton) => {
-        if (otherButton !== button) {
-          setPanelState(otherButton, false);
+    return video;
+  }
+
+  function renderFileList(files) {
+    const list = createElement("ul", "file-list");
+    files.forEach((file) => {
+      const item = createElement("li");
+      item.append(createFileLink(file));
+      list.append(item);
+    });
+    return list;
+  }
+
+  function renderImagePreviews(files, limit) {
+    const preview = createElement("div", "preview-grid");
+    files
+      .filter((file) => file.isImage)
+      .slice(0, limit)
+      .forEach((file) => {
+        const link = createElement("a", "preview-tile");
+        link.href = file.path;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+
+        const image = document.createElement("img");
+        image.src = file.path;
+        image.alt = file.title;
+        image.loading = "lazy";
+
+        link.append(image, createElement("span", "", file.title));
+        preview.append(link);
+      });
+    return preview;
+  }
+
+  function enableCarouselSwipe(element, onPrevious, onNext) {
+    let startX = 0;
+    let startY = 0;
+    let isTracking = false;
+
+    element.addEventListener(
+      "touchstart",
+      (event) => {
+        if (event.touches.length !== 1) return;
+        const touch = event.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        isTracking = true;
+      },
+      { passive: true },
+    );
+
+    element.addEventListener(
+      "touchend",
+      (event) => {
+        if (!isTracking || event.changedTouches.length !== 1) return;
+        isTracking = false;
+
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+
+        if (Math.abs(deltaX) < 42) return;
+        if (Math.abs(deltaX) <= Math.abs(deltaY) * 1.15) return;
+
+        if (deltaX > 0) {
+          onPrevious();
+          return;
         }
-      });
-    }
 
-    const block = button.closest(".content-manager-block");
-    panel.hidden = !shouldOpen;
-    button.setAttribute("aria-expanded", String(shouldOpen));
-    button.textContent = shouldOpen
-      ? button.dataset.closeLabel || "Hide"
-      : button.dataset.openLabel || "Open";
+        onNext();
+      },
+      { passive: true },
+    );
 
-    if (block) {
-      block.classList.toggle("is-open", shouldOpen);
-    }
-
-    if (!shouldOpen) {
-      panel.querySelectorAll("video").forEach((video) => {
-        video.pause();
-      });
-      return;
-    }
-
-    panel.querySelectorAll("[data-reveal]").forEach((element) => {
-      element.classList.add("is-visible");
+    element.addEventListener("touchcancel", () => {
+      isTracking = false;
     });
-
-    if (shouldScroll && block) {
-      block.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  toggleButtons.forEach((button) => {
-    setPanelState(button, button.getAttribute("aria-expanded") === "true");
-    button.addEventListener("click", () => {
-      setPanelState(button, button.getAttribute("aria-expanded") !== "true");
-    });
-  });
-
-  document.querySelectorAll("[data-content-manager-open]").forEach((trigger) => {
-    trigger.addEventListener("click", (event) => {
-      event.preventDefault();
-      const panelId = trigger.dataset.contentManagerOpen;
-      const button = toggleButtons.find((item) => item.getAttribute("aria-controls") === panelId);
-      if (button) {
-        setPanelState(button, true, true);
-      }
-    });
-  });
-
-  const initialPanelId = window.location.hash ? window.location.hash.slice(1) : "";
-  if (initialPanelId) {
-    const button = toggleButtons.find((item) => item.getAttribute("aria-controls") === initialPanelId);
-    if (button) {
-      setPanelState(button, true);
-    }
-  }
-}
-
-function renderOperationsApplicationLogos() {
-  const container = document.getElementById("operations-logo-grid");
-  if (!container) {
-    return;
   }
 
-  container.innerHTML = "";
+  function renderServices() {
+    const grid = byId("serviceGrid");
 
-  operationsApplicationLogoItems.forEach((item) => {
-    const card = document.createElement("article");
-    card.className = "operations-logo-card";
-    card.setAttribute("data-reveal", "");
+    data.services.forEach((service, index) => {
+      const number = index + 1 < 10 ? `0${index + 1}` : `${index + 1}`;
+      const article = createElement("article", "service-card");
+      const top = createElement("div", "service-card-top");
+      top.append(createServiceIcon(service.icon), createElement("span", "service-index", number));
+      article.append(top);
+      article.append(createElement("h3", "", service.title));
+      article.append(createElement("p", "", service.copy));
+      grid.append(article);
+    });
+  }
 
-    const logoWrap = document.createElement("div");
-    logoWrap.className = "operations-logo-visual";
+  function renderServiceVisuals() {
+    const carousel = byId("serviceVisualGrid");
+    let currentIndex = 0;
 
+    carousel.classList.add("service-carousel");
+    carousel.setAttribute("tabindex", "0");
+    carousel.setAttribute("aria-label", "Service artwork carousel");
+
+    const stage = createElement("div", "service-carousel-stage");
     const image = document.createElement("img");
-    image.src = toPublicUrl(item.file);
-    image.alt = `${item.title || "Operations application"} logo`;
-    image.loading = "lazy";
-    logoWrap.appendChild(image);
+    image.className = "service-carousel-image";
+    image.loading = "eager";
 
-    const body = document.createElement("div");
-    body.className = "operations-logo-body";
+    const previous = createElement("button", "carousel-button previous", "‹");
+    previous.type = "button";
+    previous.setAttribute("aria-label", "Show previous service artwork");
 
-    const title = document.createElement("h3");
-    title.textContent = item.title || "Operations Application";
+    const next = createElement("button", "carousel-button next", "›");
+    next.type = "button";
+    next.setAttribute("aria-label", "Show next service artwork");
 
-    const description = document.createElement("p");
-    description.textContent = item.description || "Application used for educational operations.";
+    stage.append(image, previous, next);
 
-    body.appendChild(title);
-    body.appendChild(description);
-    card.appendChild(logoWrap);
-    card.appendChild(body);
-    container.appendChild(card);
-  });
-}
+    function updateCarousel(index, direction = 1) {
+      currentIndex = (index + data.serviceVisuals.length) % data.serviceVisuals.length;
+      const file = data.serviceVisuals[currentIndex];
 
-function openDocumentPreview(item) {
-  document.dispatchEvent(
-    new CustomEvent("portfolio:open-document", {
-      detail: item,
-    })
-  );
-}
-
-function initializeDocumentViewer() {
-  const viewer = document.getElementById("doc-viewer");
-  const backdrop = document.getElementById("doc-viewer-backdrop");
-  const closeButton = document.getElementById("doc-viewer-close");
-  const title = document.getElementById("doc-viewer-title");
-  const content = document.getElementById("doc-viewer-content");
-
-  if (!viewer || !backdrop || !closeButton || !title || !content) {
-    return;
-  }
-
-  const closeViewer = () => {
-    viewer.classList.remove("is-open");
-    viewer.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("doc-viewer-open");
-    content.innerHTML = "";
-  };
-
-  const openViewer = (item) => {
-    if (!item || !item.file) {
-      return;
-    }
-
-    const fileUrl = toPublicUrl(item.file);
-    const externalWebPage = isExternalUrl(item.file) && !isPdfFile(item.file) && !isImageFile(item.file);
-
-    if (externalWebPage) {
-      window.open(fileUrl, "_blank", "noopener");
-      return;
-    }
-
-    title.textContent = item.title || "Document Preview";
-    content.innerHTML = "";
-
-    const previewPath = item.viewerPreview || item.preview || defaultPdfPreview(item.file);
-    const hasPreviewPath = Boolean(previewPath);
-    const shouldUsePreview = item.previewOnly && hasPreviewPath;
-
-    if (shouldUsePreview) {
-      const previewPanel = document.createElement("div");
-      previewPanel.className = "doc-viewer-preview-panel";
-
-      const image = document.createElement("img");
-      image.className = "doc-viewer-image doc-viewer-preview-image";
-      image.src = toPublicUrl(previewPath);
-      image.alt = `${item.title || "Document"} preview`;
-      image.loading = "lazy";
-      image.draggable = false;
-      image.addEventListener("error", () => {
-        image.remove();
-        const placeholder = document.createElement("div");
-        placeholder.className = "certificate-placeholder";
-        placeholder.textContent = item.typeLabel || fileExtension(item.file);
-        previewPanel.prepend(placeholder);
-      });
-
-      previewPanel.appendChild(image);
-      if (!item.hideFullFile) {
-        const fallback = document.createElement("a");
-        fallback.className = "doc-viewer-fallback-link";
-        fallback.href = fileUrl;
-        fallback.target = "_blank";
-        fallback.rel = "noopener";
-        fallback.textContent = "Open full file in new tab";
-        previewPanel.appendChild(fallback);
+      image.classList.remove("enter-next", "enter-previous");
+      if (direction !== 0) {
+        void image.offsetWidth;
+        image.classList.add(direction > 0 ? "enter-next" : "enter-previous");
       }
-      content.appendChild(previewPanel);
-    } else if (isPdfFile(item.file)) {
-      const frame = document.createElement("iframe");
-      frame.className = "doc-viewer-frame";
-      frame.src = toPdfViewerUrl(item.file);
-      frame.title = `${item.title || "Document"} PDF preview`;
-      frame.loading = "lazy";
-      content.appendChild(frame);
-    } else if (isImageFile(item.file)) {
-      const image = document.createElement("img");
-      image.className = "doc-viewer-image";
-      image.src = fileUrl;
-      image.alt = item.title || "Document image preview";
-      image.loading = "lazy";
-      image.draggable = false;
-      content.appendChild(image);
-    } else {
-      const fallback = document.createElement("a");
-      fallback.className = "doc-viewer-fallback-link";
-      fallback.href = fileUrl;
-      fallback.target = "_blank";
-      fallback.rel = "noopener";
-      fallback.textContent = "Open in new tab";
-      content.appendChild(fallback);
+      image.src = file.path;
+      image.alt = file.title;
     }
 
-    viewer.classList.add("is-open");
-    viewer.setAttribute("aria-hidden", "false");
-    document.body.classList.add("doc-viewer-open");
-  };
-
-  document.addEventListener("portfolio:open-document", (event) => {
-    openViewer(event.detail);
-  });
-
-  closeButton.addEventListener("click", closeViewer);
-  backdrop.addEventListener("click", closeViewer);
-
-  content.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-  });
-
-  content.addEventListener("dragstart", (event) => {
-    if (event.target && event.target.tagName === "IMG") {
-      event.preventDefault();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && viewer.classList.contains("is-open")) {
-      closeViewer();
-    }
-  });
-}
-
-function initializeOwnerLoginPopup() {
-  const trigger = document.getElementById("owner-login-trigger");
-  const modal = document.getElementById("owner-login-modal");
-  const backdrop = document.getElementById("owner-login-backdrop");
-  const closeButton = document.getElementById("owner-login-close");
-  const status = document.getElementById("owner-login-status");
-  const form = document.getElementById("owner-login-form");
-  const usernameInput = document.getElementById("owner-login-username");
-  const passwordInput = document.getElementById("owner-login-password");
-  const submitButton = document.getElementById("owner-login-submit");
-  const message = document.getElementById("owner-login-message");
-
-  if (
-    !trigger ||
-    !modal ||
-    !backdrop ||
-    !closeButton ||
-    !status ||
-    !form ||
-    !usernameInput ||
-    !passwordInput ||
-    !submitButton ||
-    !message
-  ) {
-    return;
-  }
-
-  const measurementId = visitorsAnalyticsConfig.gaMeasurementId.trim();
-  const dashboardUrl = visitorsAnalyticsConfig.gaDashboardUrl.trim();
-  const liveSiteUrl = (visitorsAnalyticsConfig.liveSiteUrl || "").trim();
-  const propertyId = (visitorsAnalyticsConfig.gaPropertyId || "").trim();
-  const oauthClientId = (visitorsAnalyticsConfig.gaOAuthClientId || "").trim();
-  const analyticsSummaryPage = (visitorsAnalyticsConfig.analyticsSummaryPage || "analytics-summary.html").trim();
-  const ownerUsername = visitorsAnalyticsConfig.ownerUsername.trim();
-  const ownerPassword = visitorsAnalyticsConfig.ownerPassword || "";
-
-  const loadGoogleAnalytics = (id) => {
-    if (!id || window.gtag) {
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
-    };
-
-    window.gtag("js", new Date());
-    window.gtag("config", id, {
-      anonymize_ip: true,
+    previous.addEventListener("click", () => updateCarousel(currentIndex - 1, -1));
+    next.addEventListener("click", () => updateCarousel(currentIndex + 1, 1));
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") updateCarousel(currentIndex - 1, -1);
+      if (event.key === "ArrowRight") updateCarousel(currentIndex + 1, 1);
     });
-  };
-
-  const setMessage = (text, tone = "") => {
-    message.textContent = text;
-    message.classList.remove("is-error", "is-success");
-    if (tone) {
-      message.classList.add(`is-${tone}`);
-    }
-  };
-
-  const openModal = () => {
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("owner-login-open");
-  };
-
-  const closeModal = () => {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("owner-login-open");
-    form.reset();
-    setMessage("");
-  };
-
-  if (measurementId) {
-    loadGoogleAnalytics(measurementId);
-  }
-
-  if (!ownerUsername || !ownerPassword) {
-    status.textContent = "Set ownerUsername and ownerPassword in main.js.";
-    submitButton.disabled = true;
-    setMessage("Owner login details are not configured yet.", "error");
-  } else {
-    status.textContent = "Enter your Admin/Owner login details.";
-    submitButton.disabled = false;
-    if (!propertyId || !oauthClientId) {
-      setMessage("Add gaPropertyId and gaOAuthClientId in main.js to load charts in Analytics Summary.");
-    }
-  }
-
-  trigger.addEventListener("click", openModal);
-  closeButton.addEventListener("click", closeModal);
-  backdrop.addEventListener("click", closeModal);
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!ownerUsername || !ownerPassword) {
-      return;
-    }
-
-    const enteredUsername = usernameInput.value.trim();
-    const enteredPassword = passwordInput.value;
-    const validLogin = enteredUsername === ownerUsername && enteredPassword === ownerPassword;
-
-    if (!validLogin) {
-      setMessage("Invalid login details.", "error");
-      return;
-    }
-
-    const summaryUrl = new URL(analyticsSummaryPage || "analytics-summary.html", window.location.href);
-    if (dashboardUrl) {
-      summaryUrl.searchParams.set("dashboard", dashboardUrl);
-    }
-    const resolvedLiveSiteUrl = liveSiteUrl || new URL("index.html", window.location.href).toString();
-    if (resolvedLiveSiteUrl) {
-      summaryUrl.searchParams.set("liveSite", resolvedLiveSiteUrl);
-    }
-    if (measurementId) {
-      summaryUrl.searchParams.set("measurementId", measurementId);
-    }
-    if (propertyId) {
-      summaryUrl.searchParams.set("propertyId", propertyId);
-    }
-    if (oauthClientId) {
-      summaryUrl.searchParams.set("oauthClientId", oauthClientId);
-    }
-
-    setMessage("Login successful. Opening analytics summary...", "success");
-    window.open(summaryUrl.toString(), "_blank", "noopener");
-    passwordInput.value = "";
-    setTimeout(() => {
-      closeModal();
-    }, 280);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
-      closeModal();
-    }
-  });
-}
-
-function initializePhilosophyPresentation() {
-  const screen = document.getElementById("philosophy-presentation-screen");
-  const stepElement = document.getElementById("philosophy-slide-step");
-  const titleElement = document.getElementById("philosophy-slide-title");
-  const textElement = document.getElementById("philosophy-slide-text");
-  const countElement = document.getElementById("philosophy-slide-count");
-  const dotsContainer = document.getElementById("philosophy-slide-dots");
-  const progressBar = document.getElementById("philosophy-progress-bar");
-  const container = document.querySelector(".philosophy-presentation");
-
-  if (
-    !screen ||
-    !stepElement ||
-    !titleElement ||
-    !textElement ||
-    !countElement ||
-    !dotsContainer ||
-    !progressBar ||
-    !container
-  ) {
-    return;
-  }
-
-  const prefersReducedMotion =
-    typeof window.matchMedia === "function" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const slideDuration = 4600;
-  let currentIndex = 0;
-  let intervalId = null;
-  let animationTimer = null;
-
-  const restartProgress = () => {
-    progressBar.style.transition = "none";
-    progressBar.style.transform = "scaleX(0)";
-
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        progressBar.style.transition = `transform ${slideDuration}ms linear`;
-        progressBar.style.transform = "scaleX(1)";
-      });
-    });
-  };
-
-  const setActiveSlide = (index) => {
-    currentIndex = (index + philosophySlides.length) % philosophySlides.length;
-    const slide = philosophySlides[currentIndex];
-
-    stepElement.textContent = slide.step;
-    titleElement.textContent = slide.title;
-    textElement.textContent = slide.text;
-    countElement.textContent = `${currentIndex + 1} / ${philosophySlides.length}`;
-
-    const dotButtons = dotsContainer.querySelectorAll(".presentation-dot");
-    dotButtons.forEach((dot, dotIndex) => {
-      dot.classList.toggle("is-active", dotIndex === currentIndex);
-      dot.setAttribute("aria-pressed", dotIndex === currentIndex ? "true" : "false");
-    });
-
-    if (!prefersReducedMotion) {
-      screen.classList.remove("is-switching");
-      void screen.offsetWidth;
-      screen.classList.add("is-switching");
-
-      if (animationTimer) {
-        clearTimeout(animationTimer);
-      }
-      animationTimer = setTimeout(() => {
-        screen.classList.remove("is-switching");
-      }, 520);
-    }
-
-    restartProgress();
-  };
-
-  const stopAutoplay = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-  };
-
-  const startAutoplay = () => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    stopAutoplay();
-    intervalId = setInterval(() => {
-      setActiveSlide(currentIndex + 1);
-    }, slideDuration);
-  };
-
-  dotsContainer.innerHTML = "";
-  philosophySlides.forEach((slide, index) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "presentation-dot";
-    dot.setAttribute("aria-label", `Show slide ${index + 1}: ${slide.title}`);
-    dot.setAttribute("aria-pressed", "false");
-    dot.addEventListener("click", () => {
-      setActiveSlide(index);
-      startAutoplay();
-    });
-    dotsContainer.appendChild(dot);
-  });
-
-  setActiveSlide(0);
-  startAutoplay();
-
-  container.addEventListener("mouseenter", stopAutoplay);
-  container.addEventListener("mouseleave", startAutoplay);
-  container.addEventListener("focusin", stopAutoplay);
-  container.addEventListener("focusout", (event) => {
-    if (!container.contains(event.relatedTarget)) {
-      startAutoplay();
-    }
-  });
-}
-
-function initializeReveal() {
-  const revealElements = document.querySelectorAll("[data-reveal]");
-
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.16,
-        rootMargin: "0px 0px -32px 0px",
-      }
+    enableCarouselSwipe(
+      stage,
+      () => updateCarousel(currentIndex - 1, -1),
+      () => updateCarousel(currentIndex + 1, 1),
     );
 
-    revealElements.forEach((element, index) => {
-      element.style.transitionDelay = `${Math.min(index * 40, 320)}ms`;
-      revealObserver.observe(element);
+    carousel.append(stage);
+    updateCarousel(0, 0);
+  }
+
+  function renderPortfolioLibrary() {
+    const library = byId("portfolioLibrary");
+
+    data.portfolioGroups.forEach((group) => {
+      library.append(createPortfolioCategoryCarousel(group));
     });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add("is-visible");
-    });
-  }
-}
-
-function updateYear() {
-  const yearElement = document.getElementById("year");
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-}
-
-function initializeSectionNav() {
-  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-  if (!navLinks.length) {
-    return;
   }
 
-  const sectionMap = new Map();
-  const sections = [];
+  function createPortfolioCategoryCarousel(group) {
+    const article = createElement("article", "portfolio-category-viewer");
+    article.id = `portfolio-${slugify(group.title)}`;
+    const header = createElement("div", "portfolio-category-header");
+    header.append(createElement("h3", "", group.title), createElement("p", "", group.summary));
+    article.append(header);
 
-  navLinks.forEach((link) => {
-    const hash = link.getAttribute("href");
-    const sectionId = hash ? hash.slice(1) : "";
-    const section = sectionId ? document.getElementById(sectionId) : null;
-    if (sectionId && section) {
-      sectionMap.set(sectionId, link);
-      sections.push(section);
+    if (!group.files.length) {
+      article.append(createElement("p", "empty-note portfolio-empty-note", "Samples for this category are coming soon."));
+      return article;
     }
-  });
 
-  if (!sections.length) {
-    return;
-  }
+    let currentIndex = 0;
+    const stage = createElement("div", "portfolio-carousel-stage");
+    const frame = createElement("div", "portfolio-media-frame");
+    const previous = createElement("button", "carousel-button previous", "‹");
+    previous.type = "button";
+    previous.setAttribute("aria-label", `Show previous ${group.title} item`);
 
-  const setActiveLink = (sectionId) => {
-    navLinks.forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("href") === `#${sectionId}`);
+    const next = createElement("button", "carousel-button next", "›");
+    next.type = "button";
+    next.setAttribute("aria-label", `Show next ${group.title} item`);
+
+    stage.append(frame, previous, next);
+
+    const thumbnails = createElement("div", "portfolio-carousel-thumbs");
+    const thumbnailButtons = group.files.map((file, index) => {
+      const button = createElement("button", "portfolio-carousel-thumb");
+      button.type = "button";
+      button.setAttribute("aria-label", `Show ${file.title}`);
+      button.append(createThumbnailVisual(file));
+
+      button.append(createElement("small", "", file.title));
+      button.addEventListener("click", () => {
+        const direction = index >= currentIndex ? 1 : -1;
+        updateCarousel(index, direction);
+      });
+      thumbnails.append(button);
+      return button;
     });
-  };
 
-  const firstSectionId = sections[0].id;
-  const initialHash = window.location.hash ? window.location.hash.slice(1) : firstSectionId;
-  setActiveLink(sectionMap.has(initialHash) ? initialHash : firstSectionId);
-
-  if ("IntersectionObserver" in window) {
-    const navObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveLink(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.01,
-        rootMargin: "-30% 0px -55% 0px",
+    function updateCarousel(index, direction = 1) {
+      currentIndex = (index + group.files.length) % group.files.length;
+      const file = group.files[currentIndex];
+      frame.replaceChildren();
+      frame.classList.remove("is-moving-next", "is-moving-previous");
+      if (direction !== 0) {
+        void frame.offsetWidth;
+        frame.classList.add(direction > 0 ? "is-moving-next" : "is-moving-previous");
       }
+
+      if (file.isImage) {
+        frame.append(createCarouselImage(file, direction));
+      } else if (file.type === "Video") {
+        frame.append(createCarouselVideo(file, direction));
+      } else {
+        const documentCard = createPortfolioDocumentCard(file);
+        if (direction !== 0) documentCard.classList.add(direction > 0 ? "enter-next" : "enter-previous");
+        frame.append(documentCard);
+      }
+
+      thumbnailButtons.forEach((button, buttonIndex) => {
+        const active = buttonIndex === currentIndex;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-current", active ? "true" : "false");
+      });
+
+      thumbnailButtons[currentIndex].scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+      });
+    }
+
+    previous.addEventListener("click", () => updateCarousel(currentIndex - 1, -1));
+    next.addEventListener("click", () => updateCarousel(currentIndex + 1, 1));
+    article.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") updateCarousel(currentIndex - 1, -1);
+      if (event.key === "ArrowRight") updateCarousel(currentIndex + 1, 1);
+    });
+    enableCarouselSwipe(
+      stage,
+      () => updateCarousel(currentIndex - 1, -1),
+      () => updateCarousel(currentIndex + 1, 1),
     );
 
-    sections.forEach((section) => {
-      navObserver.observe(section);
-    });
+    article.setAttribute("tabindex", "0");
+    article.append(stage, thumbnails);
+    updateCarousel(0, 0);
+    return article;
   }
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      const hash = link.getAttribute("href");
-      if (!hash) {
+  function startToolOrbit(grid) {
+    const cards = Array.from(grid.querySelectorAll(".tool-card"));
+    if (!cards.length) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let rotation = 0;
+    let velocity = 0;
+    let lastFrameTime = 0;
+    let isDragging = false;
+    let isHovering = false;
+    let startX = 0;
+    let startRotation = 0;
+    let lastPointerX = 0;
+    let lastPointerTime = 0;
+    let hoverPointerX = null;
+    let hoverPointerY = null;
+    let hoveredCard = null;
+    let audioContext = null;
+    let lastSoundTime = 0;
+
+    function getAudioContext() {
+      const AudioConstructor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioConstructor) return null;
+
+      if (!audioContext) {
+        audioContext = new AudioConstructor();
+      }
+
+      if (audioContext.state === "suspended") {
+        audioContext.resume().catch(() => {});
+      }
+
+      return audioContext;
+    }
+
+    function playSwipeSound(intensity = 1) {
+      const now = performance.now();
+      if (now - lastSoundTime < 75) return;
+
+      const context = getAudioContext();
+      if (!context) return;
+
+      lastSoundTime = now;
+      const start = context.currentTime;
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      const filter = context.createBiquadFilter();
+      const volume = Math.min(0.045, 0.018 + intensity * 0.014);
+
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(520 + intensity * 190, start);
+      oscillator.frequency.exponentialRampToValueAtTime(280, start + 0.08);
+      filter.type = "lowpass";
+      filter.frequency.setValueAtTime(1400, start);
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(volume, start + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.08);
+
+      oscillator.connect(filter);
+      filter.connect(gain);
+      gain.connect(context.destination);
+      oscillator.start(start);
+      oscillator.stop(start + 0.09);
+    }
+
+    function setToolPositions() {
+      const width = grid.clientWidth;
+      const radiusX = Math.max(120, Math.min(width * 0.42, 430));
+      const radiusY = width < 700 ? 42 : 62;
+
+      cards.forEach((card, index) => {
+        const angle = rotation + (index / cards.length) * Math.PI * 2;
+        const depth = (Math.sin(angle) + 1) / 2;
+        const x = Math.cos(angle) * radiusX;
+        const y = Math.sin(angle) * radiusY;
+        const scale = 0.72 + depth * 0.34;
+        const opacity = 0.5 + depth * 0.5;
+
+        card.style.setProperty("--tool-x", `${x.toFixed(1)}px`);
+        card.style.setProperty("--tool-y", `${y.toFixed(1)}px`);
+        card.style.setProperty("--tool-scale", scale.toFixed(3));
+        card.style.setProperty("--tool-opacity", opacity.toFixed(3));
+        card.style.zIndex = String(Math.round(depth * 100));
+      });
+    }
+
+    function setHoveredCard(card) {
+      if (hoveredCard === card) return;
+      if (hoveredCard) hoveredCard.classList.remove("is-hovered");
+      hoveredCard = card;
+      if (hoveredCard) hoveredCard.classList.add("is-hovered");
+    }
+
+    function updateHoveredCard(clientX = hoverPointerX, clientY = hoverPointerY) {
+      if (isDragging || clientX === null || clientY === null) {
+        setHoveredCard(null);
         return;
       }
-      setActiveLink(hash.slice(1));
-    });
-  });
 
-  window.addEventListener("hashchange", () => {
-    const hash = window.location.hash ? window.location.hash.slice(1) : "";
-    if (sectionMap.has(hash)) {
-      setActiveLink(hash);
+      const gridRect = grid.getBoundingClientRect();
+      if (
+        clientX < gridRect.left ||
+        clientX > gridRect.right ||
+        clientY < gridRect.top ||
+        clientY > gridRect.bottom
+      ) {
+        setHoveredCard(null);
+        return;
+      }
+
+      const maxDistance = window.innerWidth < 760 ? 70 : 90;
+      let bestCard = null;
+      let bestScore = Infinity;
+
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const distance = Math.hypot(clientX - centerX, clientY - centerY);
+        if (distance > maxDistance) return;
+
+        const depthBias = Number(card.style.zIndex || 0) * 0.1;
+        const score = distance - depthBias;
+        if (score < bestScore) {
+          bestScore = score;
+          bestCard = card;
+        }
+      });
+
+      setHoveredCard(bestCard);
     }
-  });
-}
 
-renderLogos();
-renderTeachingPhotos();
-initializeDocumentViewer();
-initializeOwnerLoginPopup();
-renderDocumentCards("certificate-grid", certificateItems, "certificates");
-renderDocumentCards("transcript-grid", transcriptItems, "transcripts");
-renderContentManagerEvidence();
-renderContentManagerVideos();
-renderContentManagerPosters();
-renderContentManagerWorkSamples();
-initializeContentManagerToggles();
-renderOperationsApplicationLogos();
-initializePhilosophyPresentation();
-initializeReveal();
-initializeSectionNav();
-updateYear();
+    function positionCards(timestamp = 0) {
+      const elapsed = lastFrameTime ? timestamp - lastFrameTime : 16;
+      lastFrameTime = timestamp;
+
+      if (!isDragging && !reducedMotion.matches && !isHovering) {
+        if (Math.abs(velocity) > 0.00002) {
+          rotation += velocity * elapsed;
+          velocity *= 0.94;
+        } else {
+          rotation += elapsed * 0.00016;
+        }
+      }
+
+      setToolPositions();
+      updateHoveredCard();
+      window.requestAnimationFrame(positionCards);
+    }
+
+    function startDrag(event) {
+      if (event.cancelable) event.preventDefault();
+      isDragging = true;
+      startX = event.clientX;
+      startRotation = rotation;
+      lastPointerX = event.clientX;
+      lastPointerTime = performance.now();
+      hoverPointerX = event.clientX;
+      hoverPointerY = event.clientY;
+      velocity = 0;
+      setHoveredCard(null);
+      grid.classList.add("is-dragging");
+      grid.setPointerCapture(event.pointerId);
+      playSwipeSound(0.8);
+    }
+
+    function movePointer(event) {
+      if (!isDragging) {
+        hoverPointerX = event.clientX;
+        hoverPointerY = event.clientY;
+        updateHoveredCard(event.clientX, event.clientY);
+        return;
+      }
+
+      const now = performance.now();
+      const deltaX = event.clientX - startX;
+      const moveX = event.clientX - lastPointerX;
+      const elapsed = Math.max(1, now - lastPointerTime);
+
+      if (event.cancelable) event.preventDefault();
+      rotation = startRotation - deltaX * 0.008;
+      velocity = (-moveX * 0.008) / elapsed;
+      lastPointerX = event.clientX;
+      lastPointerTime = now;
+      setToolPositions();
+
+      if (Math.abs(moveX) > 1.5) {
+        playSwipeSound(Math.min(1.8, Math.abs(moveX) / 24 + 0.55));
+      }
+    }
+
+    function stopDrag(event) {
+      if (!isDragging) return;
+
+      isDragging = false;
+      grid.classList.remove("is-dragging");
+      if (grid.hasPointerCapture(event.pointerId)) {
+        grid.releasePointerCapture(event.pointerId);
+      }
+      hoverPointerX = event.clientX ?? null;
+      hoverPointerY = event.clientY ?? null;
+      updateHoveredCard(hoverPointerX, hoverPointerY);
+    }
+
+    grid.tabIndex = 0;
+    grid.setAttribute("aria-label", "Swipe or drag to rotate tools and platforms");
+    grid.addEventListener("pointerenter", (event) => {
+      isHovering = true;
+      velocity = 0;
+      hoverPointerX = event.clientX;
+      hoverPointerY = event.clientY;
+      updateHoveredCard(event.clientX, event.clientY);
+    });
+    grid.addEventListener("pointerleave", () => {
+      isHovering = false;
+      hoverPointerX = null;
+      hoverPointerY = null;
+      setHoveredCard(null);
+    });
+    grid.addEventListener("pointerdown", startDrag);
+    grid.addEventListener("pointermove", movePointer);
+    grid.addEventListener("pointerup", stopDrag);
+    grid.addEventListener("pointercancel", stopDrag);
+    grid.addEventListener("lostpointercapture", stopDrag);
+    grid.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      rotation += event.key === "ArrowLeft" ? 0.35 : -0.35;
+      velocity = 0;
+      setToolPositions();
+    });
+
+    window.requestAnimationFrame(positionCards);
+  }
+
+  function renderTools() {
+    const grid = byId("toolsGrid");
+    data.tools.forEach((tool, index) => {
+      const card = createElement("article", "tool-card");
+      card.style.setProperty("--tool-delay", `${index * 0.03}s`);
+
+      const image = document.createElement("img");
+      image.src = tool.path;
+      image.alt = `${tool.title} logo`;
+      image.loading = "eager";
+      image.decoding = "async";
+
+      card.append(image, createElement("span", "", tool.title));
+      grid.append(card);
+    });
+
+    startToolOrbit(grid);
+  }
+
+  function renderTeam() {
+    const grid = byId("teamGrid");
+
+    data.team.forEach((person) => {
+      const article = createElement("article", "team-card");
+      const image = document.createElement("img");
+      image.src = person.image;
+      image.alt = person.alt;
+      image.loading = "lazy";
+
+      const body = createElement("div", "team-body");
+      body.append(createElement("h3", "", person.name));
+      body.append(createElement("p", "team-role", person.role));
+      body.append(createElement("p", "", person.copy));
+      if (person.achievements?.length) {
+        const checklist = createElement("ul", "team-checklist");
+        person.achievements.forEach((item) => {
+          checklist.append(createElement("li", "", item));
+        });
+        body.append(checklist);
+      }
+
+      const social = createElement("div", "team-social");
+      if (person.profile) {
+        const profile = createElement("a", "team-social-link profile", "in");
+        profile.href = person.profile;
+        profile.setAttribute("aria-label", `${person.name} profile`);
+        if (!person.profile.startsWith("#")) {
+          profile.target = "_blank";
+          profile.rel = "noreferrer";
+        }
+        social.append(profile);
+      }
+
+      if (person.email) {
+        const email = createElement("a", "team-social-link mail");
+        email.href = `mailto:${person.email}`;
+        email.setAttribute("aria-label", `Email ${person.name}`);
+        social.append(email);
+      }
+
+      article.append(image, body);
+      if (social.childElementCount) {
+        article.append(social);
+      }
+
+      grid.append(article);
+    });
+  }
+
+  function renderContactReasons() {
+    const list = byId("contactReasons");
+    data.contactReasons.forEach((reason) => {
+      list.append(createElement("li", "", reason));
+    });
+  }
+
+  function bindMenu() {
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = byId("site-nav");
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      nav.classList.toggle("is-open", !expanded);
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.matches("a")) {
+        toggle.setAttribute("aria-expanded", "false");
+        nav.classList.remove("is-open");
+      }
+    });
+  }
+
+  function bindContactForm() {
+    const form = byId("contactForm");
+    const note = byId("formNote");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+      const subject = encodeURIComponent(`DigitalEduPro inquiry from ${name || "Website visitor"}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+      );
+      window.location.href = `mailto:samvirtualops@gmail.com?subject=${subject}&body=${body}`;
+      note.textContent = "Opening your email app to send this message to samvirtualops@gmail.com.";
+      form.reset();
+    });
+  }
+
+  function bindSectionScrollArrow() {
+    const button = byId("sectionScrollArrow");
+    if (!button) return;
+
+    let transitionTimer;
+    let activePointerId = null;
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let pointerMoved = false;
+
+    function isNearPageBottom() {
+      const root = document.documentElement;
+      return window.scrollY + window.innerHeight >= root.scrollHeight - 18;
+    }
+
+    function updateArrowDirection() {
+      const atBottom = isNearPageBottom();
+      button.dataset.direction = atBottom ? "up" : "down";
+      button.setAttribute("aria-label", atBottom ? "Return home" : "Scroll down");
+    }
+
+    function scrollWithArrow() {
+      if (isNearPageBottom()) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      window.scrollBy({
+        top: Math.max(280, Math.round(window.innerHeight * 0.72)),
+        behavior: "smooth",
+      });
+    }
+
+    function activateArrow() {
+      clearTimeout(transitionTimer);
+      document.documentElement.classList.add("is-section-scrolling");
+      button.classList.add("is-activated");
+      scrollWithArrow();
+
+      transitionTimer = setTimeout(() => {
+        document.documentElement.classList.remove("is-section-scrolling");
+        button.classList.remove("is-activated");
+        updateArrowDirection();
+      }, 950);
+    }
+
+    button.addEventListener("pointerdown", (event) => {
+      activePointerId = event.pointerId;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      pointerMoved = false;
+    });
+
+    button.addEventListener("pointermove", (event) => {
+      if (event.pointerId !== activePointerId) return;
+      if (
+        Math.abs(event.clientX - pointerStartX) > 10 ||
+        Math.abs(event.clientY - pointerStartY) > 10
+      ) {
+        pointerMoved = true;
+      }
+    });
+
+    button.addEventListener("pointerup", (event) => {
+      if (event.pointerId !== activePointerId) return;
+      activePointerId = null;
+      if (pointerMoved) return;
+      activateArrow();
+    });
+
+    button.addEventListener("pointercancel", () => {
+      activePointerId = null;
+      pointerMoved = false;
+    });
+
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+    });
+
+    button.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      activateArrow();
+    });
+
+    window.addEventListener("scroll", updateArrowDirection, { passive: true });
+    window.addEventListener("resize", updateArrowDirection);
+    updateArrowDirection();
+  }
+
+  function bindVideoVisibilityAudio() {
+    const watchedVideos = new WeakSet();
+    const observer =
+      "IntersectionObserver" in window
+        ? new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                const video = entry.target;
+                const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.18;
+                if (isVisible) return;
+
+                video.muted = true;
+                if (!video.classList.contains("hero-bg")) {
+                  video.pause();
+                }
+              });
+            },
+            { threshold: [0, 0.18, 0.45] }
+          )
+        : null;
+
+    function watchVideo(video) {
+      if (watchedVideos.has(video)) return;
+      watchedVideos.add(video);
+
+      if (observer) {
+        observer.observe(video);
+      }
+    }
+
+    document.querySelectorAll("video").forEach(watchVideo);
+
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof HTMLElement)) return;
+
+          if (node.matches("video")) {
+            watchVideo(node);
+          }
+
+          node.querySelectorAll("video").forEach(watchVideo);
+        });
+      });
+    });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) return;
+
+      document.querySelectorAll("video").forEach((video) => {
+        video.muted = true;
+        if (!video.classList.contains("hero-bg")) {
+          video.pause();
+        }
+      });
+    });
+  }
+
+  function bindContactReveal() {
+    const section = byId("contact");
+    if (!section) return;
+
+    const stagedItems = [
+      { element: section.querySelector(".section-heading"), direction: "rise", delay: "0s" },
+      { element: section.querySelector(".contact-form"), direction: "left", delay: "0.06s" },
+      { element: section.querySelector(".email-card"), direction: "right", delay: "0.16s" },
+      { element: section.querySelector(".contact-aside"), direction: "right", delay: "0.24s" },
+      { element: section.querySelector(".growth-card"), direction: "right", delay: "0.32s" },
+    ].filter((item) => item.element);
+
+    if (!stagedItems.length) return;
+
+    stagedItems.forEach(({ element, direction, delay }) => {
+      element.classList.add("contact-reveal-item", `contact-reveal-${direction}`);
+      element.style.setProperty("--contact-reveal-delay", delay);
+    });
+
+    document.documentElement.classList.add("contact-reveal-ready");
+
+    if (!("IntersectionObserver" in window)) {
+      stagedItems.forEach(({ element }) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.16;
+          stagedItems.forEach(({ element }) => {
+            element.classList.toggle("is-visible", isVisible);
+          });
+        });
+      },
+      {
+        threshold: [0.16, 0.32],
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
+
+    observer.observe(section);
+  }
+
+  function bindTeamReveal() {
+    const section = byId("team");
+    if (!section) return;
+
+    const stagedItems = [];
+    const heading = section.querySelector(".section-heading");
+    if (heading) {
+      stagedItems.push({ element: heading, direction: "rise", delay: "0s" });
+    }
+
+    section.querySelectorAll(".team-card").forEach((card, index) => {
+      const directions = ["left", "rise", "right"];
+      stagedItems.push({
+        element: card,
+        direction: directions[index % directions.length],
+        delay: `${0.08 + index * 0.08}s`,
+      });
+    });
+
+    if (!stagedItems.length) return;
+
+    stagedItems.forEach(({ element, direction, delay }) => {
+      element.classList.add("team-reveal-item", `team-reveal-${direction}`);
+      element.style.setProperty("--team-reveal-delay", delay);
+    });
+
+    document.documentElement.classList.add("team-reveal-ready");
+
+    if (!("IntersectionObserver" in window)) {
+      stagedItems.forEach(({ element }) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.16;
+          stagedItems.forEach(({ element }) => {
+            element.classList.toggle("is-visible", isVisible);
+          });
+        });
+      },
+      {
+        threshold: [0.16, 0.32],
+        rootMargin: "0px 0px -8% 0px",
+      },
+    );
+
+    observer.observe(section);
+  }
+
+  function alignInitialHash() {
+    if (!window.location.hash) return;
+
+    const target = document.querySelector(window.location.hash);
+    if (!target) return;
+    let cancelled = false;
+    const timers = [];
+
+    const scrollToTarget = () => {
+      if (cancelled) return;
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start" });
+      root.style.scrollBehavior = previousScrollBehavior;
+    };
+
+    const cancelAlignment = () => {
+      cancelled = true;
+      timers.forEach((timer) => clearTimeout(timer));
+    };
+
+    requestAnimationFrame(scrollToTarget);
+    [160, 520].forEach((delay) => {
+      timers.push(setTimeout(scrollToTarget, delay));
+    });
+
+    document.querySelectorAll("img").forEach((image) => {
+      if (!image.complete) {
+        image.addEventListener("load", scrollToTarget, { once: true });
+      }
+    });
+
+    ["wheel", "touchstart", "pointerdown"].forEach((eventName) => {
+      window.addEventListener(eventName, cancelAlignment, { once: true, passive: true });
+    });
+    window.addEventListener("keydown", cancelAlignment, { once: true });
+    window.addEventListener(
+      "load",
+      () => {
+        timers.push(setTimeout(scrollToTarget, 120));
+      },
+      { once: true },
+    );
+  }
+
+  function init() {
+    renderServices();
+    renderServiceVisuals();
+    renderPortfolioLibrary();
+    renderTools();
+    renderTeam();
+    bindTeamReveal();
+    renderContactReasons();
+    bindMenu();
+    bindContactForm();
+    bindSectionScrollArrow();
+    bindVideoVisibilityAudio();
+    bindContactReveal();
+    alignInitialHash();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
