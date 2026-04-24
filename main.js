@@ -466,24 +466,69 @@ const operationsApplicationLogoItems = [
     description: "Drafting, content refinement, workflow support, and lesson ideation.",
   },
   {
+    file: "Operations Application Logo/Claude.webp",
+    title: "Claude",
+    description: "Long-form drafting, reasoning support, and structured content development.",
+  },
+  {
     file: "Operations Application Logo/codex.png",
     title: "Codex",
     description: "Website updates, code organization, and technical implementation support.",
   },
   {
-    file: "Operations Application Logo/google workspace.jpg",
-    title: "Google Workspace",
-    description: "Team documents, spreadsheets, shared files, and collaborative operations.",
+    file: "Operations Application Logo/Canva.webp",
+    title: "Canva",
+    description: "Posters, lesson visuals, social graphics, and quick brand-ready layouts.",
   },
   {
-    file: "Operations Application Logo/adobe-express-logo-app-icon-editable-transparent-background-social-media-design-for-digital-download-free-png.webp",
+    file: "Operations Application Logo/AdobeExpress.webp",
     title: "Adobe Express",
     description: "Fast visual design for posters, guides, and campaign assets.",
   },
   {
-    file: "Operations Application Logo/wix.png",
-    title: "Wix",
-    description: "Website pages, service listings, forms, and booking content updates.",
+    file: "Operations Application Logo/Capcut.svg",
+    title: "CapCut",
+    description: "Short-form video edits, reels, captions, and promo clips.",
+  },
+  {
+    file: "Operations Application Logo/Gamma.webp",
+    title: "Gamma",
+    description: "Presentation building and visual storytelling for proposals and lessons.",
+  },
+  {
+    file: "Operations Application Logo/GoogleWorkspace.jpg",
+    title: "Google Workspace",
+    description: "Team documents, spreadsheets, shared files, and collaborative operations.",
+  },
+  {
+    file: "Operations Application Logo/GoogleAnalytics.webp",
+    title: "Google Analytics",
+    description: "Traffic monitoring, behavior insights, and live website performance review.",
+  },
+  {
+    file: "Operations Application Logo/Hubspot.jpg",
+    title: "HubSpot",
+    description: "Contact organization, CRM routines, and communication tracking.",
+  },
+  {
+    file: "Operations Application Logo/Loom.png",
+    title: "Loom",
+    description: "Screen recordings, walkthroughs, and async team updates.",
+  },
+  {
+    file: "Operations Application Logo/Notion.png",
+    title: "Notion",
+    description: "Knowledge bases, project notes, and workflow documentation.",
+  },
+  {
+    file: "Operations Application Logo/Slack.png",
+    title: "Slack",
+    description: "Team communication, updates, and quick coordination.",
+  },
+  {
+    file: "Operations Application Logo/Trello.png",
+    title: "Trello",
+    description: "Task tracking, production flow, and deadline visibility.",
   },
   {
     file: "Operations Application Logo/meta.png",
@@ -496,9 +541,19 @@ const operationsApplicationLogoItems = [
     description: "Email campaign delivery, reminders, and parent communication flows.",
   },
   {
-    file: "Operations Application Logo/hubspot8920.jpg",
-    title: "HubSpot",
-    description: "Contact organization, CRM routines, and communication tracking.",
+    file: "Operations Application Logo/Zapier.png",
+    title: "Zapier",
+    description: "Automation between forms, apps, alerts, and repetitive tasks.",
+  },
+  {
+    file: "Operations Application Logo/wix.png",
+    title: "Wix",
+    description: "Website pages, service listings, forms, and booking content updates.",
+  },
+  {
+    file: "Operations Application Logo/SquareSpace.png",
+    title: "Squarespace",
+    description: "Website content editing, service pages, and polished landing pages.",
   },
   {
     file: "Operations Application Logo/sling.png",
@@ -509,6 +564,31 @@ const operationsApplicationLogoItems = [
     file: "Operations Application Logo/wave.png",
     title: "Wave",
     description: "Invoices, payments, and basic accounting support.",
+  },
+  {
+    file: "Operations Application Logo/Microsoft.svg.png",
+    title: "Microsoft",
+    description: "Office workflows, reporting, documents, and presentation support.",
+  },
+  {
+    file: "Operations Application Logo/PowerBI.png",
+    title: "Power BI",
+    description: "Dashboards, reporting views, and decision-ready data summaries.",
+  },
+  {
+    file: "Operations Application Logo/Python.png",
+    title: "Python",
+    description: "Automation scripts, data cleanup, and custom workflow tooling.",
+  },
+  {
+    file: "Operations Application Logo/SketchUp.png",
+    title: "SketchUp",
+    description: "Layout mockups, concept visuals, and space planning support.",
+  },
+  {
+    file: "Operations Application Logo/Mac.png",
+    title: "Mac",
+    description: "Desktop productivity, file organization, and day-to-day creative operations.",
   },
 ];
 
